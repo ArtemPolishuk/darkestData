@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darkest Data</title>
+  <!-- Styles CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-locale">
+        <div class="logo-wrapper">
+          <img src="img/logo.png" alt="Darkest Data logo" />
+        </div>
+        <div class="select-wrapper locale-select-wrapper">
+          <select id="locale-select" name="locale" class="dark-select">
+            <option value="en">English</option>
+            <option value="uk">Українська</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <header>
+    <h1>Title: Darkest Data</h1>
+    <p>Unofficial fan guide for provisions, bosses, and dungeon planning.</p>
+  </header> -->
+
+  <main>
+    <section>
+      <!-- <h2>Select: Region, longevity</h2> -->
+      <div class="region-panels">
+        <div class="region-panel">
+          <h3 id="region-heading">Region</h3>
+          <label for="region-select" class="select-label" id="region-label">Choose a region:</label>
+          <div class="select-wrapper">
+            <select id="region-select" name="region" class="dark-select">
+              <option value="ruins">Ruins</option>
+              <option value="warrens">Warrens</option>
+              <option value="cove">Cove</option>
+              <option value="weald">Weald</option>
+              <option value="town">Town</option>
+              <option value="crimson-court">Crimson Court</option>
+              <option value="color-of-madness">Color of Madness</option>
+              <option value="darkest">Darkest Dungeon</option>
+            </select>
+          </div>
+        <br />
+          <label id="longevity-label" for="longevity-select" class="select-label">Choose longevity:</label>
+          <div class="select-wrapper">
+            <select id="longevity-select" name="longevity" class="dark-select"></select>
+          </div>
+          <div class="region-display" aria-live="polite">
+            <a id="region-preview-link" href="https://darkestdungeon.fandom.com/wiki/Ruins" target="_blank" rel="noopener noreferrer" data-label="Wiki">
+              <img id="region-preview" src="img/regions/ruins.png" alt="Ruins region preview" />
+            </a>
+          </div>
+        </div>
+        <div class="region-panel">
+          <h3 id="provision-heading">Provision</h3>
+          <div id="region-provision-grid" class="provision-grid" aria-live="polite"></div>
+          <div id="region-provision-total" class="provision-total" aria-live="polite">
+            <span class="provision-total-label">Total Price:</span>
+            <img src="img/provision/coin.png" alt="Coin" class="provision-total-icon" />
+            <span id="region-provision-total-value">0</span>
+          </div>
+          <p id="region-provision">Bring torches, food, and medicine to survive the darkness.</p>
+        </div>
+        <div class="region-panel">
+          <h3 id="tips-heading">Tips</h3>
+          <div id="region-tips" class="region-tips">Watch your stress and learn enemy patterns for better runs.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <!-- <h2>Boss Comps for the region</h2> -->
+      <div class="boss-tabs">
+        <div class="boss-tab-buttons" role="tablist" aria-label="Boss comps tabs">
+          <button id="curios-tab" type="button" class="boss-tab-button active" data-boss-tab="curios" role="tab" aria-selected="true">Curios</button>
+          <button id="bosses-tab" type="button" class="boss-tab-button" data-boss-tab="bosses" role="tab" aria-selected="false">Bosses</button>
+          <button id="heroes-tab" type="button" class="boss-tab-button" data-boss-tab="heroes" role="tab" aria-selected="false">Heroes</button>
+        </div>
+        <div class="boss-tab-panel active" data-boss-panel="curios" role="tabpanel">
+          <p id="curios-panel-text">Curios content goes here. Add your dungeon curios details and interactions.</p>
+        </div>
+        <div class="boss-tab-panel" data-boss-panel="bosses" role="tabpanel" hidden>
+          <p id="bosses-panel-text">Bosses content goes here. Add boss fight information, resistances, and notes.</p>
+        </div>
+        <div class="boss-tab-panel" data-boss-panel="heroes" role="tabpanel" hidden>
+          <p id="heroes-panel-text">Heroes content goes here. Add recommended party compositions and hero tips.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="img/footer.png" alt="Footer" />
+    <p>This is an unofficial fan-made guide. Not affiliated with Red Hook Studios.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
