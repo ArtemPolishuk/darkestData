@@ -130,6 +130,8 @@ const regionProvisionGrid = document.getElementById('region-provision-grid');
 const regionProvisionTotal = document.getElementById('region-provision-total');
 const regionProvisionTotalValue = document.getElementById('region-provision-total-value');
 const regionProvision = document.getElementById('region-provision');
+const regionProvisionPriority = document.getElementById('region-provision-priority');
+const regionProvisionPriorityList = document.getElementById('region-provision-priority-list');
 const tipsHeading = document.getElementById('tips-heading');
 const regionTips = document.getElementById('region-tips');
 const bossTabs = document.querySelector('.boss-tab-buttons');
@@ -160,6 +162,23 @@ const provisionWikiLinks = {
 	Firewood: 'https://darkestdungeon.fandom.com/wiki/Firewood',
 	Antivenom: 'https://darkestdungeon.fandom.com/wiki/Antivenom'
 };
+
+const provisionPriorityGroups = [
+	[
+		{ name: 'Holy_Water', label: 'Holy water' },
+		{ name: 'Shovel', label: 'Shovel' },
+	],
+	[
+		{ name: 'Skeleton_Key', label: 'Skeleton key' }
+	],
+	[
+		{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
+	],
+	[
+		{ name: 'Antivenom', label: 'Antivenom' },
+		{ name: 'Bandage', label: 'Bandage' }
+	]
+];
 
 const regionWikiLinks = {
 	ruins: 'https://darkestdungeon.fandom.com/wiki/Ruins',
@@ -288,6 +307,53 @@ function formatProvisionTotal(value) {
 	return Number(value || 0).toLocaleString('en-US');
 }
 
+function formatTipItem(item) {
+	const text = String(item || '');
+	if (/^blight$/i.test(text)) {
+		return '<span class="tip-status tip-status-blight">Blight</span>';
+	}
+	if (/^bleed$/i.test(text)) {
+		return '<span class="tip-status tip-status-bleed">Bleed</span>';
+	}
+	return text;
+}
+
+function formatDangerText(text) {
+	return String(text || '')
+		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')">${name}</span>${punctuation}`)
+		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')">${name}</span>${punctuation}`)
+		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')">${name}</span>${punctuation}`)
+		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')">${name}</span>${punctuation}`)
+		.replace(/\s+,/g, ',');
+}
+
+function formatCurioText(text) {
+	return String(text || '')
+		.replace(/(Bookshelf)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Bookshelf" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Bookshelf.webp')">${name}</a>${punctuation}`)
+		.replace(/(Stack of Books)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Stack_of_Books" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Stack_of_Books.webp')">${name}</a>${punctuation}`)
+		.replace(/\s+,/g, ',');
+}
+
+function formatEnemyText(text) {
+	return String(text || '')
+		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Bone_Bearer" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')">${name}</a>${punctuation}`)
+		.replace(/\s+,/g, ',');
+}
+
+function renderProvisionPriority() {
+	return provisionPriorityGroups.map((group, groupIndex) => `
+		<div class="provision-priority-row">
+			${(Array.isArray(group) ? group : []).map((item, itemIndex) => `
+				<a class="provision-priority-item" href="${provisionWikiLinks[item.name]}" target="_blank" rel="noopener noreferrer">
+					<img src="img/provision/${item.name}.png" alt="${item.label}">
+					<span>${item.label}</span>
+				</a>
+			`).join('')}
+		</div>
+		${groupIndex < provisionPriorityGroups.length - 1 ? '<div class="provision-priority-arrow">↓</div>' : ''}
+	`).join('');
+}
+
 function renderRegionTips(tips) {
 	if (tips && typeof tips === 'object' && !Array.isArray(tips)) {
 		const sections = [
@@ -300,7 +366,7 @@ function renderRegionTips(tips) {
 		return sections.map(([title, items]) => `
 			<strong>${title}</strong>
 			<ul>
-				${(items || []).map(item => `<li>${item}</li>`).join('')}
+				${(items || []).map(item => `<li>${title === 'Dangers:' ? formatEnemyText(formatCurioText(formatDangerText(item))) : formatTipItem(item)}</li>`).join('')}
 			</ul>
 		`).join('');
 	}
@@ -369,6 +435,9 @@ function updateRegionDisplay() {
 	regionProvision.hidden = isRuins;
 	regionProvisionGrid.hidden = !isRuins;
 	regionProvisionTotal.hidden = !isRuins;
+	if (regionProvisionPriority) {
+		regionProvisionPriority.hidden = !isRuins;
+	}
 	regionProvisionGrid.setAttribute('aria-hidden', isRuins ? 'false' : 'true');
 	if (isRuins) {
 		regionProvisionTotalValue.textContent = formatProvisionTotal(provisionTotal);
@@ -383,11 +452,17 @@ function updateRegionDisplay() {
 			</div>
 		`).join('');
 		regionProvision.textContent = '';
+		if (regionProvisionPriorityList) {
+			regionProvisionPriorityList.innerHTML = renderProvisionPriority();
+		}
 	} else {
 		regionProvisionGrid.innerHTML = '';
 		regionProvisionGrid.hidden = true;
 		regionProvisionTotalValue.textContent = formatProvisionTotal(0);
 		regionProvision.textContent = regionTexts[regionSelect.value]?.provision || current.provision;
+		if (regionProvisionPriorityList) {
+			regionProvisionPriorityList.innerHTML = '';
+		}
 	}
 	const tips = regionTexts[regionSelect.value]?.tips || current.tips;
 	regionTips.innerHTML = renderRegionTips(tips);

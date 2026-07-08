@@ -10,6 +10,7 @@ window.DarkestDataI18n = {
       chooseLongevity: 'Choose longevity:',
       chooseLevel: 'Choose level:',
       provisionHeading: 'Provision',
+      provisionPriorityHeading: 'Priority',
       tipsHeading: 'Tips',
       bossTabsLabel: 'Boss comps tabs',
       curiosTab: 'Curios',
@@ -48,8 +49,10 @@ window.DarkestDataI18n = {
               'Bleed',
             ],
             dangers: [
-              'Stress from Bone Courtier and coordinated backline pressure',
-              'High-armor frontline enemies if left alive too long'
+              'Stress from Bone Courtiers / Cultist Acolytes / Madmen enemies',
+              'Bone Spearman in front ranks can severely damage the whole party',
+              'Stress from Bookshelf / Stack of Books curios',
+              'Bone Bearer (champion) revives other enemies',
             ]
           }
         },
@@ -103,6 +106,7 @@ window.DarkestDataI18n = {
       chooseLongevity: 'Оберіть довжину:',
       chooseLevel: 'Оберіть рівень:',
       provisionHeading: 'Провізія',
+      provisionPriorityHeading: 'Пріоритет',
       tipsHeading: 'Поради',
       bossTabsLabel: 'Вкладки босів',
       curiosTab: 'Курйози',
