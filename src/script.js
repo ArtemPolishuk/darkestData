@@ -228,13 +228,12 @@ function writeStoredValue(key, value) {
 function getLocale() {
 	const fallbackLocale = defaultLocale || 'en';
 	const selectedLocale = localeSelect?.value || fallbackLocale;
-	return locales[selectedLocale] ? selectedLocale : fallbackLocale;
+	return selectedLocale === 'en' && locales[selectedLocale] ? selectedLocale : fallbackLocale;
 }
 
 function applyStoredLocale() {
-	const storedLocale = readStoredValue(storageKeys.locale);
-	if (storedLocale && locales[storedLocale]) {
-		localeSelect.value = storedLocale;
+	if (localeSelect) {
+		localeSelect.value = 'en';
 	}
 }
 
@@ -687,7 +686,7 @@ curioSearchInput?.addEventListener('input', () => {
 });
 
 localeSelect?.addEventListener('change', () => {
-	writeStoredValue(storageKeys.locale, localeSelect.value);
+	writeStoredValue(storageKeys.locale, 'en');
 	renderStaticText();
 	updateRegionDisplay();
 });
