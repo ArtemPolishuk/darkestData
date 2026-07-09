@@ -353,6 +353,11 @@ function formatCurioText(text) {
 		.replace(/\s+,/g, ',');
 }
 
+function formatRecommendationText(text) {
+	return escapeHtml(String(text || ''))
+		.replace(/\bFood\b/gi, '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>');
+}
+
 function formatEnemyText(text) {
 	return String(text || '')
 		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Bearer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
@@ -515,7 +520,7 @@ function renderProvisionPriority() {
 	return provisionPriorityGroups.map((group, groupIndex) => `
 		<div class="provision-priority-row">
 			${(Array.isArray(group) ? group : []).map((item, itemIndex) => `
-				<a class="provision-priority-item" href="${provisionWikiLinks[item.name]}" target="_blank" rel="noopener noreferrer">
+				<a class="provision-priority-item${item.name === 'Food' ? ' provision-priority-item--food' : ''}" href="${provisionWikiLinks[item.name]}" title="${item.label || item.name || ''}" target="_blank" rel="noopener noreferrer">
 					<img src="img/provision/${item.name}.png" alt="${item.label}">
 					<span>${item.label}</span>
 				</a>
@@ -527,14 +532,21 @@ function renderProvisionPriority() {
 
 function renderRegionTips(tips) {
 	if (tips && typeof tips === 'object' && !Array.isArray(tips)) {
-		const renderGroup = (title, items) => `
+		const renderGroup = (title, items) => {
+			if (!Array.isArray(items) || !items.length) {
+				return '';
+			}
+
+			const shouldFormat = title === 'Dangers:' || title === 'Recommendations:';
+			return `
 			<div class="tip-group">
 				<strong>${title}</strong>
 				<ul>
-					${(items || []).map(item => `<li>${title === 'Dangers:' ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
+					${items.map(item => `<li>${title === 'Recommendations:' ? formatRecommendationText(item) : shouldFormat ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
 				</ul>
 			</div>
-		`;
+			`;
+		};
 
 		const stressTargets = (tips.dangers || [])
 			.filter(item => /^Stress\s+from\s+/i.test(String(item || '')))
@@ -580,6 +592,9 @@ function renderRegionTips(tips) {
 				${renderGroup('Effective:', tips.effective)}
 				${renderGroup('Ineffective:', tips.ineffective)}
 			</div>
+			<br />
+			${renderGroup('Recommendations:', tips.recommendations)}
+			<br />
 			<div class="tip-group">
 				<strong>Dangers:</strong>
 				<ul>
@@ -662,7 +677,7 @@ function updateRegionDisplay() {
 	if (isRuins) {
 		regionProvisionTotalValue.textContent = formatProvisionTotal(provisionTotal);
 		regionProvisionGrid.innerHTML = provisionSlots.map(item => item ? `
-			<a class="provision-slot provision-slot-link" href="${getProvisionItemHref(item)}" target="_blank" rel="noopener noreferrer">
+			<a class="provision-slot provision-slot-link${item.name === 'Food' ? ' provision-slot-link--food' : ''}" href="${getProvisionItemHref(item)}" title="${item.label || item.name || ''}" target="_blank" rel="noopener noreferrer">
 				<img src="${item.image}" alt="${item.alt || item.label || item.image.split('/').pop().replace(/\.[^.]+$/, '')}">
 				${item.count === 1 ? '' : `<span class="provision-count">${item.count}</span>`}
 			</a>

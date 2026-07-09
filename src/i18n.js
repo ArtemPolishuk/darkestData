@@ -26,11 +26,11 @@ window.DarkestDataI18n = {
       regionNames: {
         ruins: 'Ruins',
         warrens: 'Warrens',
-        cove: 'Cove',
         weald: 'Weald',
-        town: 'Town',
-        'crimson-court': 'Crimson Court',
-        'color-of-madness': 'Color of Madness',
+        cove: 'Cove',
+        hamlet: 'Hamlet',
+        courtyard: 'Courtyard',
+        farmstead: 'Farmstead',
         darkest: 'Darkest Dungeon'
       },
       regionTexts: {
@@ -50,11 +50,13 @@ window.DarkestDataI18n = {
             ineffective: [
               'Bleed',
             ],
+            recommendations: [
+              'Consider bringing more Food'
+            ],
             dangers: [
-              'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
               'Bone Spearman in front ranks can severely damage the whole party',
-              'Stress from Bookshelf / Stack of Books',
               'Bone Bearer (champion) revives other enemies',
+              'Stress from Bone Courtiers / Cultist Acolytes / Madmen / Bookshelf / Stack of Books',
             ]
           }
         },
@@ -146,6 +148,11 @@ window.DarkestDataI18n = {
             ineffective: [
               'Шкода через кровотечу',
               'Команди, які не дістають до задньої лінії'
+            ],
+            recommendations: [
+              'Crusader',
+              'Отрута',
+              'Шкода по неживих',
             ],
             dangers: [
               'Стрес від Bone Courtier і тиск на задню лінію',
