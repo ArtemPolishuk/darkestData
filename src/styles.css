@@ -532,6 +532,18 @@ footer img.footer-flag {
   margin-bottom: 0;
 }
 
+.tip-triple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.tip-triple .tip-group {
+  margin-bottom: 0;
+}
+
 .tip-danger-parent {
   margin-bottom: 2px;
 }

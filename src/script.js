@@ -575,8 +575,8 @@ function renderRegionTips(tips) {
 		};
 
 		return `
-			${renderGroup('Enemy types:', tips.enemyTypes)}
-			<div class="tip-pair">
+			<div class="tip-triple">
+				${renderGroup('Enemy types:', tips.enemyTypes)}
 				${renderGroup('Effective:', tips.effective)}
 				${renderGroup('Ineffective:', tips.ineffective)}
 			</div>
