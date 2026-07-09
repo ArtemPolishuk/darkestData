@@ -102,6 +102,45 @@ window.DarkestData = {
       type: 'basic',
       image: 'img/regions/cove.png',
       provision: 'Take bandages, seafood, and blight-cleansing supplies. A stable healing source and stun is valuable.',
+      provisionGrid: {
+        short: {
+          totalPrice: 3150,
+          items: [
+            { image: 'img/provision/Food.png', count: 12 },
+            { image: 'img/provision/Shovel.png', count: 3 },
+            { image: 'img/provision/Bandage.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
+            { image: 'img/provision/Skeleton_Key.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 8 },
+          ]
+        },
+        mid: {
+          totalPrice: 5325,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 1 },
+            { image: 'img/provision/Food.png', count: 18 },
+            { image: 'img/provision/Shovel.png', count: 5 },
+            { image: 'img/provision/Bandage.png', count: 4 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
+            { image: 'img/provision/Skeleton_Key.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 13 },
+          ]
+        },
+        long: {
+          totalPrice: 6650,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 2 },
+            { image: 'img/provision/Food.png', count: 20 },
+            { image: 'img/provision/Shovel.png', count: 6 },
+            { image: 'img/provision/Bandage.png', count: 6 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
+            { image: 'img/provision/Skeleton_Key.png', count: 3 },
+            { image: 'img/provision/Holy_Water.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 16 },
+          ]
+        },
+      },
       tips: 'Bring heroes that can handle bleed, keep morale steady, and avoid early cave-ins by moving carefully.'
     },
     weald: {
@@ -109,6 +148,49 @@ window.DarkestData = {
       type: 'basic',
       image: 'img/regions/weald.png',
       provision: 'Carry torches, poison cure, and stress relief items. Extra scouting helps uncover enemies early.',
+      provisionGrid: {
+        short: {
+          totalPrice: 3400,
+          items: [
+            { image: 'img/provision/Food.png', count: 12 },
+            { image: 'img/provision/Shovel.png', count: 3 },
+            { image: 'img/provision/Antivenom.png', count: 2 },
+            { image: 'img/provision/Bandage.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 1 },
+            { image: 'img/provision/Skeleton_Key.png', count: 1 },
+            { image: 'img/provision/Holy_Water.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 8 }
+          ]
+        },
+        mid: {
+          totalPrice: 5575,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 1 },
+            { image: 'img/provision/Food.png', count: 18 },
+            { image: 'img/provision/Shovel.png', count: 5 },
+            { image: 'img/provision/Antivenom.png', count: 3 },
+            { image: 'img/provision/Bandage.png', count: 3 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
+            { image: 'img/provision/Skeleton_Key.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 13 }
+          ]
+        },
+        long: {
+          totalPrice: 6650,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 2 },
+            { image: 'img/provision/Food.png', count: 20 },
+            { image: 'img/provision/Shovel.png', count: 6 },
+            { image: 'img/provision/Antivenom.png', count: 4 },
+            { image: 'img/provision/Bandage.png', count: 4 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
+            { image: 'img/provision/Skeleton_Key.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 3 },
+            { image: 'img/provision/Torch.png', count: 16 }
+          ]
+        },
+      },
       tips: 'Manage food and stress, use debuffs on dangerous foes, and don’t let surprise attacks stack up.'
     },
     'crimson-court': {

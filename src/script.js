@@ -42,7 +42,7 @@ const fallbackDarkestData = {
 					{ label: 'Holy Water', image: 'img/provision/Holy_Water.png', count: 2 },
 					{ label: 'Bandage', image: 'img/provision/Bandage.png', count: 4 }
 				]
-				}
+				},
 			}
 		}
 	},
