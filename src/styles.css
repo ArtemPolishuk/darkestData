@@ -893,6 +893,20 @@ footer img {
   background: #3a1c13;
 }
 
+.boss-tab-button:disabled {
+  background: #120b09;
+  color: #7f6d59;
+  border-color: #3d261d;
+  cursor: not-allowed;
+  opacity: 0.8;
+  text-decoration: line-through;
+  text-decoration-color: #7f6d59;
+}
+
+.boss-tab-button:disabled:hover {
+  background: #120b09;
+}
+
 .boss-tab-panel {
   background: #130c0a;
   border: 1px solid #4a1a12;

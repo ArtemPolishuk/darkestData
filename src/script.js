@@ -655,25 +655,27 @@ longevitySelect.addEventListener('change', () => {
 
 const bossTabButtons = document.querySelectorAll('.boss-tab-button');
 const bossTabPanels = document.querySelectorAll('.boss-tab-panel');
+const disabledBossTabs = new Set(['bosses', 'heroes']);
 
 function setBossTab(tabName) {
+	const nextTab = disabledBossTabs.has(tabName) ? 'curios' : tabName;
 	if (bossTabs) {
-		bossTabs.classList.toggle('boss-tabs--curios-active', tabName === 'curios');
+		bossTabs.classList.toggle('boss-tabs--curios-active', nextTab === 'curios');
 	}
 	if (curiosSearch) {
-		curiosSearch.hidden = tabName !== 'curios';
+		curiosSearch.hidden = nextTab !== 'curios';
 	}
 	bossTabButtons.forEach(button => {
-		const active = button.dataset.bossTab === tabName;
+		const active = button.dataset.bossTab === nextTab;
 		button.classList.toggle('active', active);
 		button.setAttribute('aria-selected', active ? 'true' : 'false');
 	});
 	bossTabPanels.forEach(panel => {
-		const visible = panel.dataset.bossPanel === tabName;
+		const visible = panel.dataset.bossPanel === nextTab;
 		panel.classList.toggle('active', visible);
 		panel.hidden = !visible;
 	});
-	writeStoredValue(storageKeys.tab, tabName);
+	writeStoredValue(storageKeys.tab, nextTab);
 }
 
 bossTabButtons.forEach(button => {
