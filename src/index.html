@@ -93,7 +93,7 @@
           <button id="heroes-tab" type="button" class="boss-tab-button" data-boss-tab="heroes" role="tab" aria-selected="false">Heroes</button>
         </div>
         <div class="boss-tab-panel active" data-boss-panel="curios" role="tabpanel">
-          <p id="curios-panel-text">Curios content goes here. Add your dungeon curios details and interactions.</p>
+          <div id="curios-panel-text" class="curios-panel" aria-live="polite"></div>
         </div>
         <div class="boss-tab-panel" data-boss-panel="bosses" role="tabpanel" hidden>
           <p id="bosses-panel-text">Bosses content goes here. Add boss fight information, resistances, and notes.</p>
@@ -112,6 +112,7 @@
 
   <script src="data.js"></script>
   <script src="i18n.js"></script>
+  <script src="curiosData.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

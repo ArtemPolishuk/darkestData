@@ -113,6 +113,7 @@ const fallbackI18n = {
 
 const { regionContent, longevityOptions } = window.DarkestData.regionContent ? window.DarkestData : fallbackDarkestData;
 const { defaultLocale, locales } = window.DarkestDataI18n.locales ? window.DarkestDataI18n : fallbackI18n;
+const curiosByLocation = window.DarkestDataCurios?.ruins ? window.DarkestDataCurios : { ruins: [] };
 
 const localeSelect = document.getElementById('locale-select');
 const documentTitle = document.title;
@@ -189,6 +190,14 @@ const regionWikiLinks = {
 	'crimson-court': 'https://darkestdungeon.fandom.com/wiki/The_Crimson_Court',
 	'color-of-madness': 'https://darkestdungeon.fandom.com/wiki/The_Color_of_Madness',
 	darkest: 'https://darkestdungeon.fandom.com/wiki/Darkest_Dungeon'
+};
+
+const enemyWikiLinks = {
+	'Bone Bearer': 'https://darkestdungeon.fandom.com/wiki/Bone_Bearer',
+	'Bone Courtier': 'https://darkestdungeon.fandom.com/wiki/Bone_Courtier',
+	'Bone Spearman': 'https://darkestdungeon.fandom.com/wiki/Bone_Spearman',
+	'Cultist Acolyte': 'https://darkestdungeon.fandom.com/wiki/Cultist_Acolyte',
+	'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman'
 };
 
 const storageKeys = {
@@ -309,21 +318,30 @@ function formatProvisionTotal(value) {
 
 function formatTipItem(item) {
 	const text = String(item || '');
+	if (/^DMG vs Unholy$/i.test(text)) {
+		return '<span class="tip-trinket"><span class="tip-trinket-label">DMG vs Unholy</span><span class="tip-trinket-card" role="tooltip"><span class="tip-trinket-text"><span class="tip-trinket-title">Unholy Slayer\'s Ring</span><span class="tip-trinket-stats">+25% DMG vs Unholy<br>-8 DODGE</span></span><img class="tip-trinket-image" src="img/trinkets/Inv_trinket-unholy_slayers_ring.webp" alt="Unholy Slayer\'s Ring"></span></span>';
+	}
 	if (/^blight$/i.test(text)) {
-		return '<span class="tip-status tip-status-blight">Blight</span>';
+		return '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>';
 	}
 	if (/^bleed$/i.test(text)) {
-		return '<span class="tip-status tip-status-bleed">Bleed</span>';
+		return '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>';
+	}
+	if (/\bstress\b/i.test(text)) {
+		return text.replace(/\bstress\b/gi, match => `<span class="tip-status tip-status-stress"><span>${match.charAt(0).toUpperCase()}${match.slice(1).toLowerCase()}</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>`);
+	}
+	if (/^crusader$/i.test(text)) {
+		return '<span class="hero-tip"><a class="hero-name" href="https://darkestdungeon.fandom.com/wiki/Crusader" target="_blank" rel="noopener noreferrer">Crusader</a><span class="hero-tip-card" role="tooltip"><span class="hero-tip-text"><span class="hero-tip-title">Crusader</span><span class="hero-tip-stats">+35% DMG vs Unholy on main damage skills</span></span><img class="hero-tip-image" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span>';
 	}
 	return text;
 }
 
 function formatDangerText(text) {
 	return String(text || '')
-		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')">${name}</span>${punctuation}`)
-		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')">${name}</span>${punctuation}`)
-		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')">${name}</span>${punctuation}`)
-		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<span class="enemy-name enemy-tooltip" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')">${name}</span>${punctuation}`)
+		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Courtier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')">${name}</a>${punctuation}`)
+		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')">${name}</a>${punctuation}`)
+		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')">${name}</a>${punctuation}`)
+		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')">${name}</a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
@@ -336,8 +354,82 @@ function formatCurioText(text) {
 
 function formatEnemyText(text) {
 	return String(text || '')
-		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Bone_Bearer" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')">${name}</a>${punctuation}`)
+		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Bearer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')">${name}</a>${punctuation}`)
 		.replace(/\s+,/g, ',');
+}
+
+function escapeHtml(value) {
+	return String(value ?? '')
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;');
+}
+
+function formatCurioAmount(amount) {
+	if (amount === undefined || amount === null || amount === '') {
+		return '';
+	}
+	return String(amount).replace(/\.0+$/, '');
+}
+
+function renderCurioOutcome(outcome) {
+	const amount = formatCurioAmount(outcome?.amount);
+	return `
+		<div class="curio-outcome">
+			${outcome?.chances !== 100 ? `<span class="curio-outcome-chances">${escapeHtml(outcome?.chances)}%</span>` : ''}
+			<span class="curio-outcome-label">${escapeHtml(outcome?.type?.label || '')}</span>
+			${amount ? `<span class="curio-outcome-amount">x${escapeHtml(amount)}</span>` : ''}
+		</div>
+	`;
+}
+
+function renderCurioOption(option) {
+	const isNothing = /nothing/i.test(String(option?.activator?.label || ''));
+	const activatorClass = /nothing/i.test(String(option?.activator?.label || ''))
+		? 'curio-option-activator-icon curio-option-activator-icon--nothing'
+		: 'curio-option-activator-icon curio-option-activator-icon--curio';
+
+	return `
+		<div class="curio-option ${isNothing ? 'curio-option--nothing' : 'curio-option--curio'}">
+			<div class="curio-option-activator">
+				<img class="${activatorClass}" src="${escapeHtml(option?.activator?.icon || '')}" alt="${escapeHtml(option?.activator?.label || '')}">
+			</div>
+			<div class="curio-option-outcomes">
+				${(option?.outcomes || []).map(renderCurioOutcome).join('')}
+			</div>
+		</div>
+	`;
+}
+
+function renderCurioCard(curio) {
+	return `
+		<article class="curio-card">
+			<div class="curio-header">
+				<h4 class="curio-name">${escapeHtml(curio?.name || '')}</h4>
+				<img class="curio-icon" src="${escapeHtml(curio?.icon || '')}" alt="${escapeHtml(curio?.name || '')}">
+			</div>
+			<div class="curio-options">
+				${(curio?.options || []).map(renderCurioOption).join('')}
+			</div>
+		</article>
+	`;
+}
+
+function renderCuriosPanel(location) {
+	if (!curiosPanelText) {
+		return;
+	}
+
+	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
+	const curios = location === 'ruins' ? curiosByLocation.ruins || [] : [];
+	if (!curios.length) {
+		curiosPanelText.innerHTML = `<p class="curios-placeholder">${escapeHtml(locale.panelContent.curios)}</p>`;
+		return;
+	}
+
+	curiosPanelText.innerHTML = `<div class="curio-list">${curios.map(renderCurioCard).join('')}</div>`;
 }
 
 function renderProvisionPriority() {
@@ -366,12 +458,12 @@ function renderRegionTips(tips) {
 		return sections.map(([title, items]) => `
 			<strong>${title}</strong>
 			<ul>
-				${(items || []).map(item => `<li>${title === 'Dangers:' ? formatEnemyText(formatCurioText(formatDangerText(item))) : formatTipItem(item)}</li>`).join('')}
+				${(items || []).map(item => `<li>${title === 'Dangers:' ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
 			</ul>
-		`).join('');
+		`).join('<br />');
 	}
 
-	return `<p>${tips || ''}</p>`;
+		return `<p>${formatTipItem(tips || '')}</p>`;
 }
 
 function renderStaticText() {
@@ -391,7 +483,9 @@ function renderStaticText() {
 	curiosTab.textContent = locale.curiosTab;
 	bossesTab.textContent = locale.bossesTab;
 	heroesTab.textContent = locale.heroesTab;
-	curiosPanelText.textContent = locale.panelContent.curios;
+	if (curiosPanelText) {
+		curiosPanelText.innerHTML = `<p class="curios-placeholder">${escapeHtml(locale.panelContent.curios)}</p>`;
+	}
 	bossesPanelText.textContent = locale.panelContent.bosses;
 	heroesPanelText.textContent = locale.panelContent.heroes;
 	footerText.textContent = locale.footerText;
@@ -459,13 +553,14 @@ function updateRegionDisplay() {
 		regionProvisionGrid.innerHTML = '';
 		regionProvisionGrid.hidden = true;
 		regionProvisionTotalValue.textContent = formatProvisionTotal(0);
-		regionProvision.textContent = regionTexts[regionSelect.value]?.provision || current.provision;
+		regionProvision.innerHTML = formatTipItem(regionTexts[regionSelect.value]?.provision || current.provision);
 		if (regionProvisionPriorityList) {
 			regionProvisionPriorityList.innerHTML = '';
 		}
 	}
 	const tips = regionTexts[regionSelect.value]?.tips || current.tips;
 	regionTips.innerHTML = renderRegionTips(tips);
+	renderCuriosPanel(regionSelect.value);
 	writeStoredValue(storageKeys.region, regionSelect.value);
 	writeStoredValue(storageKeys.longevity, longevitySelect.value);
 }

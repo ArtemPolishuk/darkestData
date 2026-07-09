@@ -43,6 +43,8 @@ window.DarkestDataI18n = {
             ],
             effective: [
               'Blight',
+              'Crusader',
+              'DMG vs Unholy',
               'Physical damage'
             ],
             ineffective: [
