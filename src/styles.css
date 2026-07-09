@@ -338,6 +338,28 @@ footer img {
   width: 100%;
 }
 
+.provision-priority-note {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  align-self: flex-end;
+  width: fit-content;
+  color: #8f7b58;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+}
+
+.provision-priority-note--top {
+  margin-bottom: 6px;
+}
+
+.provision-priority-note--bottom {
+  margin-top: 6px;
+}
+
 .provision-priority-row {
   display: flex;
   align-items: center;
