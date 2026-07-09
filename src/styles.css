@@ -907,21 +907,21 @@ footer img {
   object-position: center;
   display: block;
   margin: 0 auto;
-  max-width: 136px;
-  max-height: 136px;
+  max-width: 148px;
+  max-height: 148px;
   flex: 0 0 auto;
 }
 
 .curio-name {
   margin: 0;
   color: #d0a76f;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
 }
 
 .curio-options {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--curio-option-columns, 1), minmax(0, 1fr));
   gap: 0;
   align-self: stretch;
   align-content: stretch;
@@ -958,13 +958,13 @@ footer img {
 }
 
 .curio-option-activator-icon--nothing {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
 }
 
 .curio-option-activator-icon--curio {
-  width: 96px;
-  height: 96px;
+  width: 104px;
+  height: 104px;
   object-fit: contain;
   object-position: center;
 }
@@ -987,29 +987,47 @@ footer img {
   display: flex;
   align-items: center;
   gap: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   white-space: normal;
   max-width: 100%;
   color: #e8d8b0;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .curio-outcome-chances {
   color: #c9a45c;
   font-weight: 900;
-  min-width: 38px;
+  min-width: 44px;
 }
 
 .curio-outcome-label {
   font-weight: 700;
   min-width: 0;
   overflow-wrap: anywhere;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 1 auto;
+}
+
+.curio-outcome-label-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.curio-outcome-label-text {
+  min-width: 0;
+  white-space: normal;
 }
 
 .curio-outcome-amount {
   color: #f0d8a0;
   font-weight: 700;
-  margin-left: 6px;
+  margin-left: 3px;
+  display: inline;
+  white-space: nowrap;
 }
 
 @media (max-width: 700px) {

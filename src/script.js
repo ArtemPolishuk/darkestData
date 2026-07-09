@@ -374,13 +374,81 @@ function formatCurioAmount(amount) {
 	return String(amount).replace(/\.0+$/, '');
 }
 
+function getCurioOutcomeLabelIcon(label) {
+	const normalized = String(label || '').toLowerCase();
+
+	if (!normalized) {
+		return '';
+	}
+	if (normalized.includes('nothing')) {
+		return 'img/effects/Nothing.curio_tracker.webp';
+	}
+	if (normalized.includes('purge')) {
+		return 'img/effects/Purge_neg.curio_tracker.webp';
+	}
+	if (normalized.includes('heal') && normalized.includes('stress')) {
+		return 'img/effects/Heal_stress.curio_tracker.webp';
+	}
+	if (normalized.includes('stress')) {
+		return 'img/effects/stress.webp';
+	}
+	if (normalized.includes('disease')) {
+		return 'img/effects/Poptext_disease.webp';
+	}
+	if (normalized.includes('positive quirk') || normalized.includes('ruins adventurer') || normalized.includes('ruins tactician')) {
+		return 'img/effects/Quirk_pos.curio_tracker.webp';
+	}
+	if (normalized.includes('bleed')) {
+		return 'img/effects/Poptext_bleed.webp';
+	}
+	if (normalized.includes('negative quirk')) {
+		return 'img/effects/Quirk_neg.curio_tracker.webp';
+	}
+	if (normalized.includes('blight')) {
+		return 'img/effects/Poptext_poison.webp';
+	}
+	if (normalized.includes('scout') || normalized.includes('scouting')) {
+		return 'img/effects/Scout_Ahead.webp';
+	}
+	if (normalized.includes('decrease light by 25') || normalized.includes('decrease light')) {
+		return 'img/effects/Torch_up.curio_tracker.webp';
+	}
+	if (normalized.includes('set light to 100') || normalized.includes('light to 100')) {
+		return 'img/effects/Torch_up.curio_tracker.webp';
+	}
+	if (normalized.includes('summon shambler')) {
+		return 'img/effects/Room_boss.webp';
+	}
+	if (normalized.includes('torch')) {
+		return 'img/effects/Torch_up.curio_tracker.webp';
+	}
+	if (normalized.includes('buff')) {
+		return 'img/effects/Buff.curio_tracker.webp';
+	}
+	if (normalized.includes('special trinket') || normalized.includes('puzzling trapezohedron')) {
+		return 'img/effects/Loot.curio_tracker.webp';
+	}
+	if (normalized.includes('heirloom')) {
+		return 'img/effects/Currency.portrait.icon.webp';
+	}
+	if (normalized.includes('loot') || normalized.includes('gold') || normalized.includes('gems') || normalized.includes('money') || normalized.includes('any loot')) {
+		return 'img/effects/Loot.curio_tracker.webp';
+	}
+
+	return '';
+}
+
 function renderCurioOutcome(outcome) {
 	const amount = formatCurioAmount(outcome?.amount);
+	const label = String(outcome?.type?.label || '');
+	const labelIcon = getCurioOutcomeLabelIcon(label);
 	return `
 		<div class="curio-outcome">
 			${outcome?.chances !== 100 ? `<span class="curio-outcome-chances">${escapeHtml(outcome?.chances)}%</span>` : ''}
-			<span class="curio-outcome-label">${escapeHtml(outcome?.type?.label || '')}</span>
-			${amount ? `<span class="curio-outcome-amount">x${escapeHtml(amount)}</span>` : ''}
+			<span class="curio-outcome-label">
+				${labelIcon ? `<img class="curio-outcome-label-icon" src="${escapeHtml(labelIcon)}" alt="">` : ''}
+				<span class="curio-outcome-label-text">${escapeHtml(label)}${amount ? `<span class="curio-outcome-amount">x${escapeHtml(amount)}</span>` : ''}</span>
+			</span>
 		</div>
 	`;
 }
@@ -404,8 +472,9 @@ function renderCurioOption(option) {
 }
 
 function renderCurioCard(curio) {
+	const optionCount = Math.max(1, Math.min((curio?.options || []).length || 1, 3));
 	return `
-		<article class="curio-card">
+		<article class="curio-card" style="--curio-option-columns: ${optionCount};">
 			<div class="curio-header">
 				<h4 class="curio-name">${escapeHtml(curio?.name || '')}</h4>
 				<img class="curio-icon" src="${escapeHtml(curio?.icon || '')}" alt="${escapeHtml(curio?.name || '')}">
