@@ -52,6 +52,49 @@ window.DarkestData = {
       type: 'basic',
       image: 'img/regions/warrens.png',
       provision: 'Bring food, medicine, and at least one torch per hero. A retribution or bleed resist item helps a lot.',
+      provisionGrid: {
+        short: {
+          totalPrice: 3600,
+          items: [
+            { image: 'img/provision/Food.png', count: 12 },
+            { image: 'img/provision/Shovel.png', count: 2 },
+            { image: 'img/provision/Bandage.png', count: 1 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
+            { image: 'img/provision/Skeleton_Key.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 10 },
+
+          ]
+        },
+        mid: {
+          totalPrice: 5600,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 1 },
+            { image: 'img/provision/Food.png', count: 18 },
+            { image: 'img/provision/Shovel.png', count: 3 },
+            { image: 'img/provision/Antivenom.png', count: 1 },
+            { image: 'img/provision/Bandage.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
+            { image: 'img/provision/Skeleton_Key.png', count: 3 },
+            { image: 'img/provision/Holy_Water.png', count: 3 },
+            { image: 'img/provision/Torch.png', count: 16 }
+          ]
+        },
+        long: {
+          totalPrice: 6800,
+          items: [
+            { image: 'img/provision/Firewood.png', count: 2 },
+            { image: 'img/provision/Food.png', count: 20 },
+            { image: 'img/provision/Shovel.png', count: 4 },
+            { image: 'img/provision/Antivenom.png', count: 1 },
+            { image: 'img/provision/Bandage.png', count: 3 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 5 },
+            { image: 'img/provision/Skeleton_Key.png', count: 3 },
+            { image: 'img/provision/Holy_Water.png', count: 4 },
+            { image: 'img/provision/Torch.png', count: 20 }
+          ]
+        }
+      },
       tips: 'Prioritize crowd control, remove plague stacks quickly, and consider a frontline hero that can tank nasty crits.'
     },
     cove: {

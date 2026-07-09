@@ -662,22 +662,22 @@ function updateRegionDisplay() {
 	}
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
 	const regionTexts = locale.regionTexts || {};
-	const isRuins = regionSelect.value === 'ruins';
-	const ruinsGridSet = current.provisionGrid?.[longevitySelect.value] || current.provisionGrid?.short || { items: [], totalPrice: 0 };
-	const ruinsGrid = normalizeProvisionStacks(ruinsGridSet.items || []);
-	const provisionTotal = Number(ruinsGridSet.totalPrice) || 0;
-	const provisionSlots = Array.from({ length: 16 }, (_, index) => ruinsGrid[index] || null);
-	regionProvision.hidden = isRuins;
-	regionProvisionGrid.hidden = !isRuins;
-	regionProvisionTotal.hidden = !isRuins;
+	const hasProvisionGrid = Boolean(current.provisionGrid);
+	const provisionGridSet = current.provisionGrid?.[longevitySelect.value] || current.provisionGrid?.short || { items: [], totalPrice: 0 };
+	const provisionGrid = normalizeProvisionStacks(provisionGridSet.items || []);
+	const provisionTotal = Number(provisionGridSet.totalPrice) || 0;
+	const provisionSlots = Array.from({ length: 16 }, (_, index) => provisionGrid[index] || null);
+	regionProvision.hidden = hasProvisionGrid;
+	regionProvisionGrid.hidden = !hasProvisionGrid;
+	regionProvisionTotal.hidden = !hasProvisionGrid;
 	if (regionProvisionPriority) {
-		regionProvisionPriority.hidden = !isRuins;
+		regionProvisionPriority.hidden = regionSelect.value !== 'ruins';
 	}
-	regionProvisionGrid.setAttribute('aria-hidden', isRuins ? 'false' : 'true');
-	if (isRuins) {
+	regionProvisionGrid.setAttribute('aria-hidden', hasProvisionGrid ? 'false' : 'true');
+	if (hasProvisionGrid) {
 		regionProvisionTotalValue.textContent = formatProvisionTotal(provisionTotal);
 		regionProvisionGrid.innerHTML = provisionSlots.map(item => item ? `
-			<a class="provision-slot provision-slot-link${item.name === 'Food' ? ' provision-slot-link--food' : ''}" href="${getProvisionItemHref(item)}" title="${item.label || item.name || ''}" target="_blank" rel="noopener noreferrer">
+			<a class="provision-slot provision-slot-link${getProvisionItemName(item) === 'Food' ? ' provision-slot-link--food' : ''}" href="${getProvisionItemHref(item)}" title="${item.label || item.name || getProvisionItemName(item) || ''}" target="_blank" rel="noopener noreferrer">
 				<img src="${item.image}" alt="${item.alt || item.label || item.image.split('/').pop().replace(/\.[^.]+$/, '')}">
 				${item.count === 1 ? '' : `<span class="provision-count">${item.count}</span>`}
 			</a>
