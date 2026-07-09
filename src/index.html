@@ -87,13 +87,21 @@
     <section>
       <!-- <h2>Boss Comps for the region</h2> -->
       <div class="boss-tabs">
-        <div class="boss-tab-buttons" role="tablist" aria-label="Boss comps tabs">
-          <button id="curios-tab" type="button" class="boss-tab-button active" data-boss-tab="curios" role="tab" aria-selected="true">Curios</button>
-          <button id="bosses-tab" type="button" class="boss-tab-button" data-boss-tab="bosses" role="tab" aria-selected="false">Bosses</button>
-          <button id="heroes-tab" type="button" class="boss-tab-button" data-boss-tab="heroes" role="tab" aria-selected="false">Heroes</button>
+        <div class="boss-tab-header">
+          <div class="boss-tab-buttons" role="tablist" aria-label="Boss comps tabs">
+            <button id="curios-tab" type="button" class="boss-tab-button active" data-boss-tab="curios" role="tab" aria-selected="true">Curios</button>
+            <button id="bosses-tab" type="button" class="boss-tab-button" data-boss-tab="bosses" role="tab" aria-selected="false">Bosses</button>
+            <button id="heroes-tab" type="button" class="boss-tab-button" data-boss-tab="heroes" role="tab" aria-selected="false">Heroes</button>
+          </div>
+          <label class="curios-search" for="curio-search">
+            <!-- <span class="curios-search-label">Search curios</span> -->
+            <input id="curio-search" class="curios-search-input" type="search" placeholder="Search by curio name" autocomplete="off" />
+          </label>
         </div>
         <div class="boss-tab-panel active" data-boss-panel="curios" role="tabpanel">
-          <div id="curios-panel-text" class="curios-panel" aria-live="polite"></div>
+          <div class="curios-panel">
+            <div id="curios-panel-text" class="curios-panel-results" aria-live="polite"></div>
+          </div>
         </div>
         <div class="boss-tab-panel" data-boss-panel="bosses" role="tabpanel" hidden>
           <p id="bosses-panel-text">Bosses content goes here. Add boss fight information, resistances, and notes.</p>

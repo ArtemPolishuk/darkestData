@@ -135,10 +135,12 @@ const regionProvisionPriority = document.getElementById('region-provision-priori
 const regionProvisionPriorityList = document.getElementById('region-provision-priority-list');
 const tipsHeading = document.getElementById('tips-heading');
 const regionTips = document.getElementById('region-tips');
-const bossTabs = document.querySelector('.boss-tab-buttons');
+const bossTabs = document.querySelector('.boss-tabs');
+const curiosSearch = document.querySelector('.curios-search');
 const curiosTab = document.getElementById('curios-tab');
 const bossesTab = document.getElementById('bosses-tab');
 const heroesTab = document.getElementById('heroes-tab');
+const curioSearchInput = document.getElementById('curio-search');
 const curiosPanelText = document.getElementById('curios-panel-text');
 const bossesPanelText = document.getElementById('bosses-panel-text');
 const heroesPanelText = document.getElementById('heroes-panel-text');
@@ -493,12 +495,21 @@ function renderCuriosPanel(location) {
 
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
 	const curios = location === 'ruins' ? curiosByLocation.ruins || [] : [];
+	const query = String(curioSearchInput?.value || '').trim().toLowerCase();
+	const filteredCurios = query
+		? curios.filter(curio => String(curio?.name || '').toLowerCase().includes(query))
+		: curios;
 	if (!curios.length) {
 		curiosPanelText.innerHTML = `<p class="curios-placeholder">${escapeHtml(locale.panelContent.curios)}</p>`;
 		return;
 	}
 
-	curiosPanelText.innerHTML = `<div class="curio-list">${curios.map(renderCurioCard).join('')}</div>`;
+	if (!filteredCurios.length) {
+		curiosPanelText.innerHTML = `<p class="curios-placeholder">No curios found for "${escapeHtml(query)}".</p>`;
+		return;
+	}
+
+	curiosPanelText.innerHTML = `<div class="curio-list">${filteredCurios.map(renderCurioCard).join('')}</div>`;
 }
 
 function renderProvisionPriority() {
@@ -553,7 +564,7 @@ function renderStaticText() {
 	bossesTab.textContent = locale.bossesTab;
 	heroesTab.textContent = locale.heroesTab;
 	if (curiosPanelText) {
-		curiosPanelText.innerHTML = `<p class="curios-placeholder">${escapeHtml(locale.panelContent.curios)}</p>`;
+		curiosPanelText.innerHTML = '';
 	}
 	bossesPanelText.textContent = locale.panelContent.bosses;
 	heroesPanelText.textContent = locale.panelContent.heroes;
@@ -646,6 +657,12 @@ const bossTabButtons = document.querySelectorAll('.boss-tab-button');
 const bossTabPanels = document.querySelectorAll('.boss-tab-panel');
 
 function setBossTab(tabName) {
+	if (bossTabs) {
+		bossTabs.classList.toggle('boss-tabs--curios-active', tabName === 'curios');
+	}
+	if (curiosSearch) {
+		curiosSearch.hidden = tabName !== 'curios';
+	}
 	bossTabButtons.forEach(button => {
 		const active = button.dataset.bossTab === tabName;
 		button.classList.toggle('active', active);
@@ -661,6 +678,10 @@ function setBossTab(tabName) {
 
 bossTabButtons.forEach(button => {
 	button.addEventListener('click', () => setBossTab(button.dataset.bossTab));
+});
+
+curioSearchInput?.addEventListener('input', () => {
+	renderCuriosPanel(regionSelect.value);
 });
 
 localeSelect?.addEventListener('change', () => {
