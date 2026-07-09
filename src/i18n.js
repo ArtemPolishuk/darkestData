@@ -14,14 +14,14 @@ window.DarkestDataI18n = {
       tipsHeading: 'Tips',
       bossTabsLabel: 'Boss comps tabs',
       curiosTab: 'Curios',
-      bossesTab: 'Bosses',
-      heroesTab: 'Heroes',
+      bossesTab: 'Bosses (TBD)',
+      heroesTab: 'Heroes (TBD)',
       regionPreviewAlt: '{name} region preview',
       footerText: 'This is an unofficial fan-made guide. Not affiliated with Red Hook Studios.',
       panelContent: {
         curios: 'Curios content goes here. Add your dungeon curios details and interactions.',
-        bosses: 'Bosses content goes here. Add boss fight information, resistances, and notes.',
-        heroes: 'Heroes content goes here. Add recommended party compositions and hero tips.'
+        bosses: 'Bosses content goes here',
+        heroes: 'Heroes content goes here'
       },
       regionNames: {
         ruins: 'Ruins',
