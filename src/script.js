@@ -569,11 +569,7 @@ function renderRegionTips(tips) {
 
 			return `
 				<li class="tip-danger-parent">
-					<span class="tip-danger-stress"><span class="tip-danger-stress-label">${escapeHtml(stressMatch[1])}</span><img class="tip-danger-stress-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>
-					<span class="tip-danger-from">from</span>
-					<ul class="tip-danger-sublist">
-						${stressTargets.map(target => `<li>${formatTipItem(formatEnemyText(formatCurioText(formatDangerText(target))))}</li>`).join('')}
-					</ul>
+					<span class="tip-danger-stress"><span class="tip-danger-stress-label">${escapeHtml(stressMatch[1])}</span><img class="tip-danger-stress-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span> from ${stressTargets.map(target => formatTipItem(formatEnemyText(formatCurioText(formatDangerText(target))))).join(' / ')}
 				</li>
 			`;
 		};
