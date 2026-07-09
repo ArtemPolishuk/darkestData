@@ -7,7 +7,7 @@ window.DarkestDataI18n = {
       languageLabel: 'Language',
       regionHeading: 'Region',
       chooseRegion: 'Choose a region:',
-      chooseLongevity: 'Choose longevity:',
+      chooseLongevity: 'Choose size of journey:',
       chooseLevel: 'Choose level:',
       provisionHeading: 'Provision',
       provisionPriorityHeading: 'Priority',
@@ -51,9 +51,9 @@ window.DarkestDataI18n = {
               'Bleed',
             ],
             dangers: [
-              'Stress from Bone Courtiers / Cultist Acolytes / Madmen enemies',
+              'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
               'Bone Spearman in front ranks can severely damage the whole party',
-              'Stress from Bookshelf / Stack of Books curios',
+              'Stress from Bookshelf / Stack of Books',
               'Bone Bearer (champion) revives other enemies',
             ]
           }

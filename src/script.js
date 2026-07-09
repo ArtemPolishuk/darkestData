@@ -339,23 +339,23 @@ function formatTipItem(item) {
 
 function formatDangerText(text) {
 	return String(text || '')
-		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Courtier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')">${name}</a>${punctuation}`)
-		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')">${name}</a>${punctuation}`)
-		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')">${name}</a>${punctuation}`)
-		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')">${name}</a>${punctuation}`)
+		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Courtier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
 function formatCurioText(text) {
 	return String(text || '')
-		.replace(/(Bookshelf)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Bookshelf" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Bookshelf.webp')">${name}</a>${punctuation}`)
-		.replace(/(Stack of Books)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="https://darkestdungeon.fandom.com/wiki/Stack_of_Books" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Stack_of_Books.webp')">${name}</a>${punctuation}`)
+		.replace(/(Bookshelf)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--curio" href="https://darkestdungeon.fandom.com/wiki/Bookshelf" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Bookshelf.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Stack of Books)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--curio" href="https://darkestdungeon.fandom.com/wiki/Stack_of_Books" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/curios/Stack_of_Books.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
 function formatEnemyText(text) {
 	return String(text || '')
-		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip" href="${enemyWikiLinks['Bone Bearer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')">${name}</a>${punctuation}`)
+		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Bearer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
@@ -527,19 +527,70 @@ function renderProvisionPriority() {
 
 function renderRegionTips(tips) {
 	if (tips && typeof tips === 'object' && !Array.isArray(tips)) {
-		const sections = [
-			['Enemy types:', tips.enemyTypes],
-			['Effective:', tips.effective],
-			['Ineffective:', tips.ineffective],
-			['Dangers:', tips.dangers]
+		const renderGroup = (title, items) => `
+			<div class="tip-group">
+				<strong>${title}</strong>
+				<ul>
+					${(items || []).map(item => `<li>${title === 'Dangers:' ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
+				</ul>
+			</div>
+		`;
+
+		const stressTargets = (tips.dangers || [])
+			.filter(item => /^Stress\s+from\s+/i.test(String(item || '')))
+			.flatMap(item => {
+				const text = String(item || '');
+				const match = text.match(/^Stress\s+from\s+(.+?)(\s+enemies?)?$/i);
+				if (!match) {
+					return [];
+				}
+				return (match[1] || '')
+					.split(/\s*\/\s*/)
+					.map(part => part.trim())
+					.filter(Boolean);
+			})
+			.reduce((list, item) => (list.includes(item) ? list : [...list, item]), []);
+		let stressRendered = false;
+		const dangerItems = [
+			...(tips.dangers || []).filter(item => !/^Stress\s+from\s+/i.test(String(item || ''))),
+			...(tips.dangers || []).filter(item => /^Stress\s+from\s+/i.test(String(item || '')))
 		];
 
-		return sections.map(([title, items]) => `
-			<strong>${title}</strong>
-			<ul>
-				${(items || []).map(item => `<li>${title === 'Dangers:' ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
-			</ul>
-		`).join('<br />');
+		const renderDangerItem = item => {
+			const text = String(item || '');
+			const stressMatch = text.match(/^(Stress)\s+from\s+(.+?)(\s+enemies?)?$/i);
+			if (!stressMatch) {
+				return `<li>${formatTipItem(formatEnemyText(formatCurioText(formatDangerText(text))))}</li>`;
+			}
+			if (stressRendered) {
+				return '';
+			}
+			stressRendered = true;
+
+			return `
+				<li class="tip-danger-parent">
+					<span class="tip-danger-stress"><span class="tip-danger-stress-label">${escapeHtml(stressMatch[1])}</span><img class="tip-danger-stress-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>
+					<span class="tip-danger-from">from</span>
+					<ul class="tip-danger-sublist">
+						${stressTargets.map(target => `<li>${formatTipItem(formatEnemyText(formatCurioText(formatDangerText(target))))}</li>`).join('')}
+					</ul>
+				</li>
+			`;
+		};
+
+		return `
+			${renderGroup('Enemy types:', tips.enemyTypes)}
+			<div class="tip-pair">
+				${renderGroup('Effective:', tips.effective)}
+				${renderGroup('Ineffective:', tips.ineffective)}
+			</div>
+			<div class="tip-group">
+				<strong>Dangers:</strong>
+				<ul>
+					${dangerItems.map(renderDangerItem).join('')}
+				</ul>
+			</div>
+		`;
 	}
 
 		return `<p>${formatTipItem(tips || '')}</p>`;
