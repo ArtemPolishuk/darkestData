@@ -312,6 +312,7 @@ footer img {
 .provision-priority {
   flex: 1;
   min-height: 0;
+  height: 100%;
   margin-top: 14px;
   padding-top: 14px;
   border-top: 1px solid #4a1a12;
@@ -333,17 +334,20 @@ footer img {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
+  gap: 8px;
+  width: 100%;
 }
 
 .provision-priority-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 9px;
+  flex: 1 1 0;
+  flex-wrap: nowrap;
+  gap: clamp(6px, 0.8vw, 10px);
   width: fit-content;
   max-width: 100%;
+  min-width: 0;
 }
 
 .provision-priority-arrow {
@@ -357,11 +361,14 @@ footer img {
 .provision-priority-item {
   display: inline-flex;
   align-items: center;
+  gap: 0.45em;
+  flex: 0 1 auto;
+  min-width: 0;
   color: #e8d8b0;
   text-decoration: none;
   font-size: 16px;
   font-weight: 700;
-  min-width: 0;
+  white-space: nowrap;
 }
 
 .provision-priority-item:hover {
@@ -376,10 +383,11 @@ footer img {
 
 .provision-priority-item img {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: clamp(48px, 4.2vw, 64px);
+  height: clamp(48px, 4.2vw, 64px);
   object-fit: contain;
   transition: transform 140ms ease;
+  flex: 0 0 auto;
 }
 
 .provision-priority-separator {
@@ -805,8 +813,8 @@ footer img {
 
 .provision-count {
   position: absolute;
-  left: 0px;
-  top: 5px;
+  left: 5%;
+  top: 5%;
   transform: none;
   min-width: 14px;
   height: 12px;
@@ -917,7 +925,7 @@ footer img {
 .curio-name {
   margin: 0;
   color: #d0a76f;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
 }
 
@@ -993,7 +1001,7 @@ footer img {
   white-space: normal;
   max-width: 100%;
   color: #e8d8b0;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .curio-outcome-chances {
