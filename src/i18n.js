@@ -17,7 +17,7 @@ window.DarkestDataI18n = {
       bossesTab: 'Bosses (TBD)',
       heroesTab: 'Heroes (TBD)',
       regionPreviewAlt: '{name} region preview',
-      footerText: 'This is an unofficial fan-made guide. Not affiliated with Red Hook Studios.',
+        footerText: `This is a fan-made tool created to help players on their darkest journeys.<br>All game content, names, materials, trademarks, and images belong <a href="https://www.redhookgames.com/" target="_blank" rel="noopener noreferrer">Red Hook Studios</a>, creators of <a href="https://www.darkestdungeon.com/" target="_blank" rel="noopener noreferrer">Darkest Dungeon</a>.<br>Thank you for the inspiration, references, challenge, and for being helpful throughout my own journey to <a href="https://arnaud.rocks/darkest-companion/" target="_blank" rel="noopener noreferrer">Darkest Companion</a>.<br>Finally, eternal gratitude to the Armed Forces of Ukraine for their protection, courage, and resilient fight against imperialist aggression.<br><img class="footer-flag" src="img/ukraine-flag.svg" alt="Ukraine flag"> Glory to Ukraine!`,
       panelContent: {
         curios: 'Curios content goes here. Add your dungeon curios details and interactions.',
         bosses: 'Bosses content goes here',
@@ -115,7 +115,7 @@ window.DarkestDataI18n = {
       bossesTab: 'Боси',
       heroesTab: 'Герої',
       regionPreviewAlt: 'Прев’ю регіону {name}',
-      footerText: 'Це неофіційний фанатський гайд. Не пов’язаний з Red Hook Studios.',
+        footerText: `Це фанатський інструмент, щоб допомогти іншим гравцям.<br>Усі торгові марки, контент і зображення належать <a href="https://www.redhookgames.com/" target="_blank" rel="noopener noreferrer">Red Hook Studios</a>, творцям <a href="https://www.darkestdungeon.com/" target="_blank" rel="noopener noreferrer">Darkest Dungeon</a>.<br>Дякуємо за натхнення та матеріали з <a href="https://arnaud.rocks/darkest-companion/" target="_blank" rel="noopener noreferrer">Darkest Companion</a>.<br>And don't forget to reming yourself that overconfidence is a slow and insidious killer.<br><img class="footer-flag" src="img/ukraine-flag.svg" alt="Прапор України"> Say thanks to ARMED FORCES of UKRAINE for protection and resilient fight against imperialistic terrorists. Glory to Ukraine`,
       panelContent: {
         curios: 'Тут буде контент про курйози. Додайте деталі про предмети та взаємодії.',
         bosses: 'Тут буде контент про босів. Додайте інформацію про бої, резисти та нотатки.',

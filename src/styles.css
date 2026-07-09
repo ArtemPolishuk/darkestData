@@ -4,7 +4,7 @@ html, body {
   background: #000000;
   color: #e8d8b0;
   font-family: "Merriweather", Georgia, serif;
-  padding: 0 16px 16px;
+  padding: 0 16px 4px;
 }
 
 h1,
@@ -148,11 +148,33 @@ footer {
   text-align: center;
 }
 
-footer img {
+footer p {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+footer a,
+footer a:visited {
+  color: #c9a45c;
+}
+
+footer a:hover {
+  color: #f0d8a0;
+}
+
+footer > img:not(.footer-flag) {
   display: block;
   width: 400px;
   max-width: 45%;
   margin: 0 auto 12px;
+}
+
+footer img.footer-flag {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  vertical-align: -0.08em;
+  margin: 0 0.18em 0 0;
 }
 
 .region-display {

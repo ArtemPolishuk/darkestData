@@ -618,7 +618,7 @@ function renderStaticText() {
 	}
 	bossesPanelText.textContent = locale.panelContent.bosses;
 	heroesPanelText.textContent = locale.panelContent.heroes;
-	footerText.textContent = locale.footerText;
+	footerText.innerHTML = locale.footerText;
 }
 function getCurrentImage(current) {
 	if (current.type === 'darkest') {
