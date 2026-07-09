@@ -75,6 +75,7 @@ button:hover {
   box-shadow: 0 0 18px rgba(120, 20, 10, 0.22);
   background-image: url('img/header.png');
   background-size: cover;
+  background-position: center center;
   width: auto;
   min-height: 100%;
   padding-right: 16px;
@@ -117,6 +118,7 @@ button:hover {
   --logo-scale: 1.1;
   --logo-x: 0px;
   --logo-y: -7px;
+  background-position: center center;
 }
 
 .logo-wrapper img {
