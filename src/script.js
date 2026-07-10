@@ -113,7 +113,7 @@ const fallbackI18n = {
 
 const { regionContent, longevityOptions } = window.DarkestData.regionContent ? window.DarkestData : fallbackDarkestData;
 const { defaultLocale, locales } = window.DarkestDataI18n.locales ? window.DarkestDataI18n : fallbackI18n;
-const curiosByLocation = window.DarkestDataCurios?.ruins ? window.DarkestDataCurios : { ruins: [] };
+const curiosByLocation = window.DarkestDataCurios || { ruins: [] };
 
 const localeSelect = document.getElementById('locale-select');
 const documentTitle = document.title;
@@ -498,7 +498,7 @@ function renderCuriosPanel(location) {
 	}
 
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
-	const curios = location === 'ruins' ? curiosByLocation.ruins || [] : [];
+	const curios = curiosByLocation[location] || [];
 	const query = String(curioSearchInput?.value || '').trim().toLowerCase();
 	const filteredCurios = query
 		? curios.filter(curio => String(curio?.name || '').toLowerCase().includes(query))
