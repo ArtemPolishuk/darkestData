@@ -201,6 +201,7 @@ const regionWikiLinks = {
 
 const enemyWikiLinks = {
 	'Bone Bearer': 'https://darkestdungeon.fandom.com/wiki/Bone_Bearer',
+	'Bone Arbalist': 'https://darkestdungeon.fandom.com/wiki/Bone_Arbalist',
 	'Bone Courtier': 'https://darkestdungeon.fandom.com/wiki/Bone_Courtier',
 	'Bone Spearman': 'https://darkestdungeon.fandom.com/wiki/Bone_Spearman',
 	'Cultist Acolyte': 'https://darkestdungeon.fandom.com/wiki/Cultist_Acolyte',
@@ -271,6 +272,78 @@ function getText(key, fallback) {
 
 function formatTemplate(template, values) {
 	return template.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? '');
+}
+
+function positionTooltipCard(trigger) {
+	if (!trigger) {
+		return;
+	}
+
+	const card = trigger.querySelector('.tip-trinket-card, .hero-tip-card, .tip-recommendation-food-card');
+	if (!card) {
+		return;
+	}
+
+	window.requestAnimationFrame(() => {
+		const triggerRect = trigger.getBoundingClientRect();
+		const cardRect = card.getBoundingClientRect();
+		const padding = 12;
+		const viewportWidth = window.innerWidth;
+		const viewportHeight = window.innerHeight;
+		const isFoodTooltip = trigger.classList.contains('tip-recommendation-food-wrap');
+
+		if (isFoodTooltip) {
+			const centeredLeft = triggerRect.left + (triggerRect.width / 2) - (cardRect.width / 2);
+			let shiftX = 0;
+
+			if (centeredLeft < padding) {
+				shiftX = padding - centeredLeft;
+			} else if (centeredLeft + cardRect.width > viewportWidth - padding) {
+				shiftX = (viewportWidth - padding) - (centeredLeft + cardRect.width);
+			}
+
+			card.style.setProperty('--tooltip-shift-x', `${shiftX}px`);
+			card.classList.remove('tooltip-card--right');
+			return;
+		}
+		const centeredTop = triggerRect.top + (triggerRect.height / 2) - (cardRect.height / 2);
+		const spaceLeft = triggerRect.left - padding;
+		const spaceRight = viewportWidth - triggerRect.right - padding;
+		let shiftY = 0;
+		let placeRight = false;
+
+		if (centeredTop < padding) {
+			shiftY = padding - centeredTop;
+		} else if (centeredTop + cardRect.height > viewportHeight - padding) {
+			shiftY = (viewportHeight - padding) - (centeredTop + cardRect.height);
+		}
+
+		if (spaceLeft < cardRect.width + 10 && spaceRight > spaceLeft) {
+			placeRight = true;
+		}
+
+		card.style.setProperty('--tooltip-shift-y', `${shiftY}px`);
+		card.classList.toggle('tooltip-card--right', placeRight);
+	});
+}
+
+function setupTooltipPositioning() {
+	const tooltipSelector = '.tip-trinket, .hero-tip, .tip-recommendation-food-wrap';
+	const updateFromTarget = target => {
+		const trigger = target?.closest?.(tooltipSelector);
+		if (trigger) {
+			positionTooltipCard(trigger);
+		}
+	};
+
+	document.addEventListener('mouseenter', event => updateFromTarget(event.target), true);
+	document.addEventListener('focusin', event => updateFromTarget(event.target), true);
+	window.addEventListener('resize', () => {
+		const activeTrigger = document.querySelector(`${tooltipSelector}:hover`) || document.activeElement?.closest?.(tooltipSelector);
+		if (activeTrigger) {
+			positionTooltipCard(activeTrigger);
+		}
+	});
 }
 
 function setSelectOptions(selectElement, options, labelResolver) {
@@ -345,13 +418,16 @@ function formatProvisionTotal(value) {
 function formatTipItem(item) {
 	const text = String(item || '');
 	if (/^DMG vs Unholy$/i.test(text)) {
-		return '<span class="tip-trinket"><span class="tip-trinket-label">DMG vs Unholy</span><span class="tip-trinket-card" role="tooltip"><span class="tip-trinket-text"><span class="tip-trinket-title">Unholy Slayer\'s Ring</span><span class="tip-trinket-stats">+25% DMG vs Unholy<br>-8 DODGE</span></span><img class="tip-trinket-image" src="img/trinkets/Inv_trinket-unholy_slayers_ring.webp" alt="Unholy Slayer\'s Ring"></span></span>';
+		return '<span class="tip-trinket"><span class="tip-trinket-label">DMG vs Unholy</span><span class="tip-trinket-card" role="tooltip"><span class="tip-trinket-entity tip-trinket-entity--hero"><span class="tip-trinket-hero-text"><strong>Crusader</strong><span>+35% DMG vs Unholy on main damage skills</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-hero-icon" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span><span class="tip-trinket-entity tip-trinket-entity--trinket"><span class="tip-trinket-text"><span class="tip-trinket-title">Unholy Slayer\'s Ring</span><span class="tip-trinket-stats">+25% DMG vs Unholy<br>-8 DODGE</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-image" src="img/trinkets/Inv_trinket-unholy_slayers_ring.webp" alt="Unholy Slayer\'s Ring"></span></span><span class="tip-trinket-entity tip-trinket-entity--quirk"><span class="tip-trinket-quirk-text"><strong>Unholy Hater</strong><span>+15% DMG and -15% Stress vs Unholy</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-quirk-icon" src="img/effects/Quirkicon_neg.webp" alt=""></span></span><span class="tip-trinket-entity tip-trinket-entity--stun"><span class="tip-trinket-stun-text"><strong>Stuns</strong><span>Stuns</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-stun-icon" src="img/effects/Poptext_stun.webp" alt="Stuns"></span></span></span></span>';
 	}
 	if (/^blight$/i.test(text)) {
 		return '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>';
 	}
 	if (/^bleed$/i.test(text)) {
 		return '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>';
+	}
+	if (/^stun(s)?$/i.test(text)) {
+		return '<span class="tip-status tip-status-stun"><span>Stun</span><img class="tip-status-icon" src="img/effects/Poptext_stun.webp" alt="" aria-hidden="true"></span>';
 	}
 	if (/\bstress\b/i.test(text)) {
 		return text.replace(/\bstress\b/gi, match => `<span class="tip-status tip-status-stress"><span>${match.charAt(0).toUpperCase()}${match.slice(1).toLowerCase()}</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>`);
@@ -364,6 +440,7 @@ function formatTipItem(item) {
 
 function formatDangerText(text) {
 	return String(text || '')
+		.replace(/(Bone Arbalists?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Arbalist']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Arbalist.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Courtier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
@@ -797,3 +874,4 @@ applyStoredLongevity();
 renderStaticText();
 setBossTab(readStoredValue(storageKeys.tab) || 'curios');
 updateRegionDisplay();
+setupTooltipPositioning();

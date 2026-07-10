@@ -39,13 +39,13 @@ window.DarkestDataI18n = {
           provision: 'Pack torches, bandages, and anti-venom. A strong ranged party and stun are useful here.',
           tips: {
             enemyTypes: [
-              'Unholy', 
+              'Unholy (!)', 
               'Human',
             ],
             effective: [
               'Blight',
-              'Crusader',
               'DMG vs Unholy',
+              'Stun',
               'Physical damage'
             ],
             ineffective: [
@@ -55,8 +55,9 @@ window.DarkestDataI18n = {
               'Consider bringing more Food'
             ],
             dangers: [
-              'Bone Spearman in front ranks can severely damage the whole party',
-              'Bone Bearer (champion) revives other enemies',
+              'Bone Arbalist high damage in backline',
+              'Bone Spearman high damage in frontline',
+              'Bone Bearer (champion) revives and buffs enemies',
               'Stress from Bone Courtiers / Cultist Acolytes / Madmen / Bookshelf / Stack of Books',
             ]
           }

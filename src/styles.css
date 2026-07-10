@@ -635,6 +635,10 @@ footer img.footer-flag {
   color: #c94a4a;
 }
 
+.tip-status-stun {
+  color: #ffd24a;
+}
+
 .tip-status-stress {
   color: #d9d9d9;
 }
@@ -660,15 +664,18 @@ footer img.footer-flag {
 
 .tip-trinket-card {
   position: absolute;
-  left: 50%;
-  bottom: calc(100% + 10px);
+  right: calc(100% + 10px);
+  top: 50%;
   display: flex;
+  flex-direction: column;
   align-items: stretch;
-  gap: 14px;
+  gap: 10px;
   width: max-content;
-  max-width: 280px;
+  max-width: min(380px, calc(100vw - 24px));
+  max-height: min(320px, calc(100vh - 24px));
+  overflow-y: auto;
   padding: 12px 14px;
-  transform: translateX(-50%);
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
   background: rgba(16, 10, 8, 0.97);
   border: 1px solid #8f2b17;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
@@ -676,20 +683,85 @@ footer img.footer-flag {
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
   z-index: 6;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tip-trinket-card::-webkit-scrollbar {
+  display: none;
 }
 
 .tip-trinket-card::before {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: -6px;
+  right: -6px;
+  top: 50%;
   width: 12px;
   height: 12px;
-  transform: translateX(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   background: rgba(16, 10, 8, 0.97);
   border-right: 1px solid #8f2b17;
   border-bottom: 1px solid #8f2b17;
   z-index: -1;
+}
+
+.tip-trinket-card.tooltip-card--right {
+  left: calc(100% + 10px);
+  right: auto;
+}
+
+.tip-trinket-card.tooltip-card--right::before {
+  left: -6px;
+  right: auto;
+  transform: translateY(-50%) rotate(225deg);
+}
+
+.tip-trinket-entity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tip-trinket-entity + .tip-trinket-entity {
+  padding-top: 8px;
+  border-top: 1px solid rgba(143, 43, 23, 0.45);
+}
+
+.tip-trinket-entity-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.tip-trinket-entity-media img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.tip-trinket-entity--hero .tip-trinket-entity-media {
+  width: 72px;
+  min-width: 72px;
+}
+
+.tip-trinket-entity--trinket .tip-trinket-entity-media {
+  width: 76px;
+  min-width: 76px;
+}
+
+.tip-trinket-entity--quirk .tip-trinket-entity-media {
+  width: 84px;
+  min-width: 84px;
+}
+
+.tip-trinket-entity--stun .tip-trinket-entity-media {
+  width: 78px;
+  min-width: 78px;
 }
 
 .tip-trinket-text {
@@ -705,7 +777,7 @@ footer img.footer-flag {
 
 .tip-trinket-title {
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 400;
   color: #f3c27e;
 }
 
@@ -714,10 +786,98 @@ footer img.footer-flag {
   flex-direction: column;
   gap: 2px;
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #f2f2f2;
   white-space: normal;
   overflow-wrap: anywhere;
+}
+
+.tip-trinket-quirk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(143, 43, 23, 0.45);
+}
+
+.tip-trinket-quirk-icon {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  image-rendering: auto;
+}
+
+.tip-trinket-stun-icon {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  image-rendering: auto;
+}
+
+.tip-trinket-hero-icon {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  image-rendering: auto;
+}
+
+.tip-trinket-quirk .tip-trinket-quirk-text {
+  flex: 1 1 auto;
+}
+
+.tip-trinket-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: #f2f2f2;
+  font-weight: 400;
+}
+
+.tip-trinket-hero-text strong {
+  color: #f3c27e;
+  font-weight: 400;
+}
+
+.tip-trinket-quirk-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: #f2f2f2;
+  font-weight: 400;
+}
+
+.tip-trinket-quirk-text strong {
+  color: #f3c27e;
+  font-weight: 400;
+}
+
+.tip-trinket-stun-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: #f2f2f2;
+  font-weight: 400;
+}
+
+.tip-trinket-stun-text strong {
+  color: #f3c27e;
+  font-weight: 400;
+}
+
+.tip-trinket-quirk-text span {
+  font-weight: inherit;
 }
 
 .tip-trinket-image {
@@ -725,13 +885,19 @@ footer img.footer-flag {
   height: 100%;
   flex: 0 0 auto;
   object-fit: contain;
+  object-position: center;
   image-rendering: auto;
 }
 
 .tip-trinket:hover .tip-trinket-card,
 .tip-trinket:focus-within .tip-trinket-card {
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px);
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
+}
+
+.tip-trinket:hover .tip-trinket-card.tooltip-card--right,
+.tip-trinket:focus-within .tip-trinket-card.tooltip-card--right {
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
 }
 
 .enemy-name {
@@ -793,7 +959,10 @@ footer img.footer-flag {
   justify-content: center;
   width: fit-content;
   padding: 0;
-  transform: translateX(-50%);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  transform: translateX(calc(-50% + var(--tooltip-shift-x, 0px)));
   background: rgba(16, 10, 8, 0.97);
   border: 1px solid #8f2b17;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
@@ -801,6 +970,12 @@ footer img.footer-flag {
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
   z-index: 6;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tip-recommendation-food-card::-webkit-scrollbar {
+  display: none;
 }
 
 .tip-recommendation-food-card::before {
@@ -817,6 +992,22 @@ footer img.footer-flag {
   z-index: -1;
 }
 
+.tip-recommendation-food-card.tooltip-card--right {
+  left: calc(100% + 10px);
+  right: auto;
+  bottom: auto;
+  top: 50%;
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
+}
+
+.tip-recommendation-food-card.tooltip-card--right::before {
+  left: -6px;
+  right: auto;
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(225deg);
+}
+
 .tip-recommendation-food-image {
   display: block;
   width: auto;
@@ -829,7 +1020,12 @@ footer img.footer-flag {
 .tip-recommendation-food-wrap:hover .tip-recommendation-food-card,
 .tip-recommendation-food-wrap:focus-within .tip-recommendation-food-card {
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px);
+  transform: translateX(calc(-50% + var(--tooltip-shift-x, 0px)));
+}
+
+.tip-recommendation-food-wrap:hover .tip-recommendation-food-card.tooltip-card--right,
+.tip-recommendation-food-wrap:focus-within .tip-recommendation-food-card.tooltip-card--right {
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
 }
 
 .hero-tip {
@@ -912,15 +1108,17 @@ footer img.footer-flag {
 
 .hero-tip-card {
   position: absolute;
-  left: 50%;
-  bottom: calc(100% + 10px);
+  right: calc(100% + 10px);
+  top: 50%;
   display: flex;
   align-items: stretch;
   gap: 14px;
   width: max-content;
-  max-width: 300px;
+  max-width: min(300px, calc(100vw - 24px));
+  max-height: min(320px, calc(100vh - 24px));
+  overflow-y: auto;
   padding: 12px 14px;
-  transform: translateX(-50%);
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
   background: rgba(16, 10, 8, 0.97);
   border: 1px solid #8f2b17;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
@@ -928,20 +1126,37 @@ footer img.footer-flag {
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
   z-index: 6;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hero-tip-card::-webkit-scrollbar {
+  display: none;
 }
 
 .hero-tip-card::before {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: -6px;
+  right: -6px;
+  top: 50%;
   width: 12px;
   height: 12px;
-  transform: translateX(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   background: rgba(16, 10, 8, 0.97);
   border-right: 1px solid #8f2b17;
   border-bottom: 1px solid #8f2b17;
   z-index: -1;
+}
+
+.hero-tip-card.tooltip-card--right {
+  left: calc(100% + 10px);
+  right: auto;
+}
+
+.hero-tip-card.tooltip-card--right::before {
+  left: -6px;
+  right: auto;
+  transform: translateY(-50%) rotate(225deg);
 }
 
 .hero-tip-text {
@@ -983,7 +1198,12 @@ footer img.footer-flag {
 .hero-tip:hover .hero-tip-card,
 .hero-tip:focus-within .hero-tip-card {
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px);
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
+}
+
+.hero-tip:hover .hero-tip-card.tooltip-card--right,
+.hero-tip:focus-within .hero-tip-card.tooltip-card--right {
+  transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
 }
 
 .provision-grid {
