@@ -45,7 +45,6 @@ window.DarkestDataI18n = {
             effective: [
               'Blight',
               'DMG vs Unholy',
-              'Physical damage'
             ],
             ineffective: [
               'Bleed',
@@ -55,7 +54,7 @@ window.DarkestDataI18n = {
             ],
             dangers: [
               'Bone Arbalist high damage in backline',
-              'Bone Spearman high damage in frontline',
+              'Bone Spearman high damage in frontline to the whole group',
               'Bone Bearer (champion) revives and buffs enemies',
               'Stress from Bone Courtiers / Cultist Acolytes / Madmen / Bookshelf / Stack of Books',
             ]
