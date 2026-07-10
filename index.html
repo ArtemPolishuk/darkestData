@@ -42,14 +42,21 @@
           <label for="region-select" class="select-label" id="region-label">Choose a region:</label>
           <div class="select-wrapper">
             <select id="region-select" name="region" class="dark-select">
-              <option value="ruins">Ruins</option>
-              <option value="warrens">Warrens</option>
-              <option value="cove">Cove</option>
-              <option value="weald">Weald</option>
-              <option value="hamlet">Hamlet</option>
-              <option value="courtyard">Courtyard</option>
-              <option value="farmstead">Farmstead</option>
-              <option value="darkest">Darkest Dungeon</option>
+              <optgroup label="Standart">
+                <option value="ruins">Ruins</option>
+                <option value="warrens">Warrens</option>
+                <option value="cove">Cove</option>
+                <option value="weald">Weald</option>
+                <option value="darkest">Darkest Dungeon</option>
+              </optgroup>
+              <optgroup label="Special Events">
+                <option value="hamlet">Hamlet (Wolves at the door)</option>
+                <option value="weald-shrieker">Weald (Shrieker)</option>
+              </optgroup>
+              <optgroup label="DLC">
+                <option value="courtyard">Courtyard</option>
+                <option value="farmstead">Farmstead</option>
+              </optgroup>
             </select>
           </div>
         <br />

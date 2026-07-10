@@ -2,74 +2,8 @@ window.DarkestData = window.DarkestData || {};
 window.DarkestDataI18n = window.DarkestDataI18n || {};
 
 const fallbackDarkestData = {
-	regionContent: {
-		ruins: {
-			name: 'Ruins',
-			type: 'basic',
-			image: 'img/regions/ruins.png',
-			provision: 'Pack torches, bandages, and anti-venom. A strong ranged party and stun are useful here.',
-			tips: 'Avoid grouping heroes too tightly, stay aware of trap tiles, and bring bleed resist where possible.',
-			provisionGrid: {
-				short: {
-					totalPrice: 21,
-					items: [
-					{ label: 'Torch', image: 'img/provision/Torch.png', count: 8 },
-					{ label: 'Food', image: 'img/provision/Food.png', count: 8 },
-					{ label: 'Shovel', image: 'img/provision/Shovel.png', count: 1 },
-					{ label: 'Skeleton Key', image: 'img/provision/Skeleton_Key.png', count: 1 },
-					{ label: 'Holy Water', image: 'img/provision/Holy_Water.png', count: 1 },
-					{ label: 'Bandage', image: 'img/provision/Bandage.png', count: 2 }
-				]
-				},
-				mid: {
-					totalPrice: 33,
-					items: [
-					{ label: 'Torch', image: 'img/provision/Torch.png', count: 12 },
-					{ label: 'Food', image: 'img/provision/Food.png', count: 12 },
-					{ label: 'Shovel', image: 'img/provision/Shovel.png', count: 2 },
-					{ label: 'Skeleton Key', image: 'img/provision/Skeleton_Key.png', count: 1 },
-					{ label: 'Holy Water', image: 'img/provision/Holy_Water.png', count: 2 },
-					{ label: 'Bandage', image: 'img/provision/Bandage.png', count: 4 }
-				]
-				},
-				long: {
-					totalPrice: 43,
-					items: [
-					{ label: 'Torch', image: 'img/provision/Torch.png', count: 16 },
-					{ label: 'Food', image: 'img/provision/Food.png', count: 16 },
-					{ label: 'Shovel', image: 'img/provision/Shovel.png', count: 3 },
-					{ label: 'Skeleton Key', image: 'img/provision/Skeleton_Key.png', count: 2 },
-					{ label: 'Holy Water', image: 'img/provision/Holy_Water.png', count: 2 },
-					{ label: 'Bandage', image: 'img/provision/Bandage.png', count: 4 }
-				]
-				},
-			}
-		}
-	},
-	longevityOptions: {
-		basic: [
-			{ value: 'short', label: 'Short' },
-			{ value: 'mid', label: 'Mid' },
-			{ value: 'long', label: 'Long' }
-		],
-		crimson: [
-			{ value: 'short', label: 'Short' },
-			{ value: 'epic', label: 'Epic' }
-		],
-		madness: [
-			{ value: 'short', label: 'Short' },
-			{ value: 'endless', label: 'Endless' }
-		],
-		town: [
-			{ value: 'short', label: 'Short' }
-		],
-		darkest: [
-			{ value: '1', label: '1' },
-			{ value: '2', label: '2' },
-			{ value: '3', label: '3' },
-			{ value: '4', label: '4' }
-		]
-	}
+	regionContent: window.DarkestData.regionContent || {},
+	longevityOptions: window.DarkestData.longevityOptions || {}
 };
 
 const fallbackI18n = {
@@ -101,8 +35,8 @@ const fallbackI18n = {
 				warrens: 'Warrens',
 				cove: 'Cove',
 				weald: 'Weald',
+				'weald-shrieker': 'Weald (Shrieker)',
 				town: 'Town',
-				'crimson-court': 'Crimson Court',
 				'color-of-madness': 'Color of Madness',
 				darkest: 'Darkest Dungeon'
 			},
@@ -154,6 +88,19 @@ const provisionStackLimits = {
 	default: 6
 };
 
+const provisionPrices = {
+	Food: 75,
+	Torch: 75,
+	Shovel: 250,
+	Bandage: 150,
+	Medicinal_Herbs: 200,
+	Skeleton_Key: 200,
+	Holy_Water: 150,
+	Antivenom: 150,
+	Firewood: 0,
+	Dog_Treats: 0
+};
+
 const provisionWikiLinks = {
 	Food: 'https://darkestdungeon.fandom.com/wiki/Food',
 	Shovel: 'https://darkestdungeon.fandom.com/wiki/Shovel',
@@ -166,22 +113,80 @@ const provisionWikiLinks = {
 	Antivenom: 'https://darkestdungeon.fandom.com/wiki/Antivenom'
 };
 
-const provisionPriorityGroups = [
-	[
-		{ name: 'Holy_Water', label: 'Holy water' },
-		{ name: 'Shovel', label: 'Shovel' },
+const provisionPriorityGroups = {
+	ruins: [
+		[
+			{ name: 'Holy_Water', label: 'Holy water' },
+			{ name: 'Skeleton_Key', label: 'Skeleton key' }
+		],
+		[
+			{ name: 'Shovel', label: 'Shovel' }
+		],
+		[
+			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
+		],
+		[
+			{ name: 'Antivenom', label: 'Antivenom' },
+		],
+		[
+			{ name: 'Bandage', label: 'Bandage' }
+		]
 	],
-	[
-		{ name: 'Skeleton_Key', label: 'Skeleton key' }
+	warrens: [
+		[
+			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
+		],
+		[
+			{ name: 'Skeleton_Key', label: 'Skeleton key' }
+		],
+		[
+			{ name: 'Holy_Water', label: 'Holy water' },
+			{ name: 'Bandage', label: 'Bandage' }
+		],
+		[
+			{ name: 'Antivenom', label: 'Antivenom' }
+		],
+		[
+			{ name: 'Shovel', label: 'Shovel' }
+		]
 	],
-	[
-		{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
+	cove: [
+		[
+			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' },
+			{ name: 'Shovel', label: 'Shovel' }
+		],
+		[
+			{ name: 'Holy_Water', label: 'Holy water' }
+		],
+		[
+			{ name: 'Skeleton_Key', label: 'Skeleton key' }
+		],
+		[
+			{ name: 'Antivenom', label: 'Antivenom' }
+		],
+		[
+			{ name: 'Bandage', label: 'Bandage' }
+		]
 	],
-	[
-		{ name: 'Antivenom', label: 'Antivenom' },
-		{ name: 'Bandage', label: 'Bandage' }
+	weald: [
+		[
+			{ name: 'Antivenom', label: 'Antivenom' },
+			{ name: 'Bandage', label: 'Bandage' }
+		],
+		[
+			{ name: 'Shovel', label: 'Shovel' }
+		],
+		[
+			{ name: 'Skeleton_Key', label: 'Skeleton key' }
+		],
+		[
+			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
+		],
+		[
+			{ name: 'Holy_Water', label: 'Holy water' }
+		]
 	]
-];
+};
 
 const regionWikiLinks = {
 	ruins: 'https://darkestdungeon.fandom.com/wiki/Ruins',
@@ -207,6 +212,10 @@ const storageKeys = {
 	region: 'darkest-data-region',
 	longevity: 'darkest-data-longevity',
 	tab: 'darkest-data-tab'
+};
+
+const regionAliases = {
+	'weald-shrieker': 'weald'
 };
 
 function readStoredValue(key) {
@@ -251,6 +260,10 @@ function applyStoredLongevity() {
 	}
 }
 
+function getResolvedRegionKey(regionKey) {
+	return regionAliases[regionKey] || regionKey;
+}
+
 function getText(key, fallback) {
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
 	return key.split('.').reduce((value, part) => value && value[part], locale) || fallback;
@@ -268,7 +281,8 @@ function setSelectOptions(selectElement, options, labelResolver) {
 
 function getLocalizedRegionName(regionKey) {
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
-	return locale.regionNames[regionKey] || regionContent[regionKey]?.name || regionKey;
+	const resolvedRegionKey = getResolvedRegionKey(regionKey);
+	return locale.regionNames[regionKey] || locale.regionNames[resolvedRegionKey] || regionContent[resolvedRegionKey]?.name || regionKey;
 }
 
 function getLocalizedLongevityLabel(value, fallbackLabel) {
@@ -285,6 +299,13 @@ function getProvisionStackLimit(item) {
 
 function getProvisionItemName(item) {
 	return item?.label || item?.alt || item?.image?.split('/').pop().replace(/\.[^.]+$/, '') || '';
+}
+
+function getProvisionItemPrice(item) {
+	const rawName = getProvisionItemName(item);
+	const normalizedName = rawName.replace(/_/g, ' ').trim();
+	const compactName = normalizedName.replace(/\s+/g, '_');
+	return Number(provisionPrices[rawName] ?? provisionPrices[compactName] ?? provisionPrices[normalizedName] ?? 0) || 0;
 }
 
 function getProvisionItemHref(item) {
@@ -311,6 +332,10 @@ function normalizeProvisionStacks(items) {
 		}
 		return stacks;
 	});
+}
+
+function calculateProvisionTotal(items) {
+	return (items || []).reduce((total, item) => total + (Number(item?.count) || 0) * getProvisionItemPrice(item), 0);
 }
 
 function formatProvisionTotal(value) {
@@ -398,6 +423,18 @@ function getCurioOutcomeLabelIcon(label) {
 	if (normalized.includes('stress')) {
 		return 'img/effects/stress.webp';
 	}
+	if (normalized.includes('debuff resist')) {
+		return 'img/effects/Buff.curio_tracker.webp';
+	}
+	if (normalized.includes('debuff')) {
+		return 'img/effects/Poptext_debuff.webp';
+	}
+	if (normalized.includes('buff')) {
+		return 'img/effects/Buff.curio_tracker.webp';
+	}
+	if (normalized.includes('food')) {
+		return 'img/effects/Loot.curio_tracker.webp';
+	}
 	if (normalized.includes('disease')) {
 		return 'img/effects/Poptext_disease.webp';
 	}
@@ -427,9 +464,6 @@ function getCurioOutcomeLabelIcon(label) {
 	}
 	if (normalized.includes('torch')) {
 		return 'img/effects/Torch_up.curio_tracker.webp';
-	}
-	if (normalized.includes('buff')) {
-		return 'img/effects/Buff.curio_tracker.webp';
 	}
 	if (normalized.includes('special trinket') || normalized.includes('puzzling trapezohedron')) {
 		return 'img/effects/Loot.curio_tracker.webp';
@@ -516,8 +550,9 @@ function renderCuriosPanel(location) {
 	curiosPanelText.innerHTML = `<div class="curio-list">${filteredCurios.map(renderCurioCard).join('')}</div>`;
 }
 
-function renderProvisionPriority() {
-	return provisionPriorityGroups.map((group, groupIndex) => `
+function renderProvisionPriority(location) {
+	const groups = provisionPriorityGroups[location] || provisionPriorityGroups.ruins || [];
+	return groups.map((group, groupIndex) => `
 		<div class="provision-priority-row">
 			${(Array.isArray(group) ? group : []).map((item, itemIndex) => `
 				<a class="provision-priority-item${item.name === 'Food' ? ' provision-priority-item--food' : ''}" href="${provisionWikiLinks[item.name]}" title="${item.label || item.name || ''}" target="_blank" rel="noopener noreferrer">
@@ -526,7 +561,7 @@ function renderProvisionPriority() {
 				</a>
 			`).join('')}
 		</div>
-		${groupIndex < provisionPriorityGroups.length - 1 ? '<div class="provision-priority-arrow">↓</div>' : ''}
+		${groupIndex < groups.length - 1 ? '<div class="provision-priority-arrow">↓</div>' : ''}
 	`).join('');
 }
 
@@ -640,7 +675,8 @@ function getCurrentImage(current) {
 }
 
 function updateLongevityOptions() {
-	const current = regionContent[regionSelect.value] || regionContent.ruins;
+	const currentRegionKey = getResolvedRegionKey(regionSelect.value);
+	const current = regionContent[currentRegionKey] || regionContent.ruins;
 	const options = longevityOptions[current.type] || longevityOptions.basic;
 	setSelectOptions(longevitySelect, options, option => getLocalizedLongevityLabel(option.value, option.label));
 	const storedLongevity = readStoredValue(storageKeys.longevity);
@@ -653,25 +689,27 @@ function updateLongevityOptions() {
 }
 
 function updateRegionDisplay() {
-	const current = regionContent[regionSelect.value] || regionContent.ruins;
+	const currentRegionKey = getResolvedRegionKey(regionSelect.value);
+	const current = regionContent[currentRegionKey] || regionContent.ruins;
 	updateLongevityOptions();
 	regionPreview.src = getCurrentImage(current);
 	regionPreview.alt = formatTemplate(getText('regionPreviewAlt', '{name} preview'), { name: getLocalizedRegionName(regionSelect.value) });
 	if (regionPreviewLink) {
-		regionPreviewLink.href = regionWikiLinks[regionSelect.value] || regionWikiLinks.ruins;
+		regionPreviewLink.href = regionWikiLinks[currentRegionKey] || regionWikiLinks.ruins;
 	}
 	const locale = locales[getLocale()] || locales[defaultLocale] || locales.en;
 	const regionTexts = locale.regionTexts || {};
+	const regionText = regionTexts[currentRegionKey] || regionTexts[regionSelect.value] || {};
 	const hasProvisionGrid = Boolean(current.provisionGrid);
-	const provisionGridSet = current.provisionGrid?.[longevitySelect.value] || current.provisionGrid?.short || { items: [], totalPrice: 0 };
+	const provisionGridSet = current.provisionGrid?.[longevitySelect.value] || current.provisionGrid?.short || { items: [] };
 	const provisionGrid = normalizeProvisionStacks(provisionGridSet.items || []);
-	const provisionTotal = Number(provisionGridSet.totalPrice) || 0;
+	const provisionTotal = calculateProvisionTotal(provisionGrid);
 	const provisionSlots = Array.from({ length: 16 }, (_, index) => provisionGrid[index] || null);
 	regionProvision.hidden = hasProvisionGrid;
 	regionProvisionGrid.hidden = !hasProvisionGrid;
 	regionProvisionTotal.hidden = !hasProvisionGrid;
 	if (regionProvisionPriority) {
-		regionProvisionPriority.hidden = regionSelect.value !== 'ruins';
+		regionProvisionPriority.hidden = !provisionPriorityGroups[currentRegionKey];
 	}
 	regionProvisionGrid.setAttribute('aria-hidden', hasProvisionGrid ? 'false' : 'true');
 	if (hasProvisionGrid) {
@@ -688,20 +726,20 @@ function updateRegionDisplay() {
 		`).join('');
 		regionProvision.textContent = '';
 		if (regionProvisionPriorityList) {
-			regionProvisionPriorityList.innerHTML = renderProvisionPriority();
+			regionProvisionPriorityList.innerHTML = renderProvisionPriority(currentRegionKey);
 		}
 	} else {
 		regionProvisionGrid.innerHTML = '';
 		regionProvisionGrid.hidden = true;
 		regionProvisionTotalValue.textContent = formatProvisionTotal(0);
-		regionProvision.innerHTML = formatTipItem(regionTexts[regionSelect.value]?.provision || current.provision);
+		regionProvision.innerHTML = formatTipItem(regionText.provision || current.provision);
 		if (regionProvisionPriorityList) {
 			regionProvisionPriorityList.innerHTML = '';
 		}
 	}
-	const tips = regionTexts[regionSelect.value]?.tips || current.tips;
+	const tips = regionText.tips || current.tips;
 	regionTips.innerHTML = renderRegionTips(tips);
-	renderCuriosPanel(regionSelect.value);
+	renderCuriosPanel(currentRegionKey);
 	writeStoredValue(storageKeys.region, regionSelect.value);
 	writeStoredValue(storageKeys.longevity, longevitySelect.value);
 }
@@ -744,7 +782,7 @@ bossTabButtons.forEach(button => {
 });
 
 curioSearchInput?.addEventListener('input', () => {
-	renderCuriosPanel(regionSelect.value);
+	renderCuriosPanel(getResolvedRegionKey(regionSelect.value));
 });
 
 localeSelect?.addEventListener('change', () => {

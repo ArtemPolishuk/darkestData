@@ -1535,3 +1535,15 @@ footer img.footer-flag {
   color: #e8d8b0;
   font-family: "Merriweather", Georgia, serif;
 }
+
+.dark-select optgroup {
+  color: #d0a76f;
+  background: #160d0b;
+  font-weight: 900;
+}
+
+.dark-select optgroup option {
+  color: #e8d8b0;
+  font-weight: 700;
+  padding-left: 18px;
+}
