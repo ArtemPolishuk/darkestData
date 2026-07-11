@@ -705,6 +705,8 @@ function renderRegionTips(tips) {
 				${renderGroup('Ineffective:', tips.ineffective)}
 			</div>
 			<br />
+			${renderGroup('Resistances:', tips.resistances)}
+			${tips.resistances?.length ? '<br />' : ''}
 			${renderGroup('Recommendations:', tips.recommendations)}
 			<br />
 			<div class="tip-group">

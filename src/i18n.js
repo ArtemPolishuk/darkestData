@@ -49,8 +49,16 @@ window.DarkestDataI18n = {
             ineffective: [
               'Bleed',
             ],
+            resistances: [
+              'Stun resistance (frontline)',
+              'Move resistance (frontline)',
+              'Bleed resistance (frontline)',
+            ],
             recommendations: [
-              'Consider bringing more Food'
+              'Extra Food (!)',
+              'Stun, Move, Guard-break to disrupt common foes',
+              'Armor Piercing for high PROT enemies in region',
+              'Corpse removal to mitigate Bone Bearer`s revival',
             ],
             dangers: [
               'Bone Arbalist high damage in backline',
