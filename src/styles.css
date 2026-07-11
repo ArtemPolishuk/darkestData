@@ -602,7 +602,7 @@ footer img.footer-flag {
 
 .tip-pair {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 12px;
   align-items: start;
   margin-bottom: 8px;
@@ -627,6 +627,24 @@ footer img.footer-flag {
   vertical-align: -0.12em;
 }
 
+.tip-resistance-status,
+.tip-recommendation-status {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.tip-resistance-status .tip-status-icon,
+.tip-recommendation-status .tip-status-icon {
+  filter:
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000);
+}
+
 .tip-status-blight {
   color: #5fbf58;
 }
@@ -635,8 +653,16 @@ footer img.footer-flag {
   color: #c94a4a;
 }
 
+.tip-status-move {
+  color: #4ea3ff;
+}
+
 .tip-status-stun {
-  color: #ffd24a;
+  color: #ffe85b;
+}
+
+.tip-status-guardbreak {
+  color: #ffb54a;
 }
 
 .tip-status-stress {
@@ -645,6 +671,14 @@ footer img.footer-flag {
 
 .tip-status-stress .tip-status-icon {
   filter: brightness(1.9) saturate(1.35);
+}
+
+.tip-recommendation-status {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .tip-trinket {

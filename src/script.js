@@ -438,6 +438,20 @@ function formatTipItem(item) {
 	return text;
 }
 
+function formatResistanceText(text) {
+	return String(text || '')
+		.replace(/\b(move|stun|bleed)\b/gi, match => {
+			const key = match.toLowerCase();
+			const label = key.charAt(0).toUpperCase() + key.slice(1);
+			const icon = key === 'move'
+				? 'img/effects/Poptext_move.webp'
+				: key === 'stun'
+					? 'img/effects/Poptext_stun.webp'
+					: 'img/effects/Poptext_bleed.webp';
+			return `<span class="tip-status tip-status-${key} tip-resistance-status"><span>${label}</span><img class="tip-status-icon" src="${icon}" alt="" aria-hidden="true"></span>`;
+		});
+}
+
 function formatDangerText(text) {
 	return String(text || '')
 		.replace(/(Bone Arbalists?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Arbalist']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Arbalist.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
@@ -456,8 +470,15 @@ function formatCurioText(text) {
 }
 
 function formatRecommendationText(text) {
-	return escapeHtml(String(text || ''))
-		.replace(/\bFood\b/gi, '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>');
+	const recommendationText = escapeHtml(String(text || ''))
+		.replace(/\bFood\b/gi, '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>')
+		.replace(/\bStun\b/gi, '<span class="tip-status tip-status-stun tip-recommendation-status"><span>Stun</span><img class="tip-status-icon" src="img/effects/Poptext_stun.webp" alt="" aria-hidden="true"></span>')
+		.replace(/\bMove\b/gi, '<span class="tip-status tip-status-move tip-recommendation-status"><span>Move</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>')
+		.replace(/\bGuard-break\b/gi, '<span class="tip-status tip-status-guardbreak tip-recommendation-status"><span>Guard-break</span><img class="tip-status-icon" src="img/effects/Poptext_guard_break.webp" alt="" aria-hidden="true"></span>')
+		.replace(/\bArmor piercing\b/gi, 'Armor piercing')
+		.replace(/\bCorpse removal\b/gi, 'Corpse removal');
+
+	return `<span class="tip-recommendation-status">${recommendationText}</span>`;
 }
 
 function formatEnemyText(text) {
@@ -654,7 +675,7 @@ function renderRegionTips(tips) {
 			<div class="tip-group">
 				<strong>${title}</strong>
 				<ul>
-					${items.map(item => `<li>${title === 'Recommendations:' ? formatRecommendationText(item) : shouldFormat ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
+					${items.map(item => `<li>${title === 'Recommendations:' ? formatRecommendationText(item) : title === 'Resistances to increase:' ? formatResistanceText(item) : shouldFormat ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
 				</ul>
 			</div>
 			`;
@@ -701,13 +722,13 @@ function renderRegionTips(tips) {
 		return `
 			<div class="tip-triple">
 				${renderGroup('Enemy types:', tips.enemyTypes)}
-				${renderGroup('Effective:', tips.effective)}
-				${renderGroup('Ineffective:', tips.ineffective)}
+				${renderGroup('Effective DMG:', tips.effective)}
+				${renderGroup('Ineffective DMG:', tips.ineffective)}
 			</div>
-			<br />
-			${renderGroup('Resistances:', tips.resistances)}
-			${tips.resistances?.length ? '<br />' : ''}
-			${renderGroup('Recommendations:', tips.recommendations)}
+			<div class="tip-pair">
+				${renderGroup('Resistances to increase:', tips.resistances)}
+				${renderGroup('Recommendations:', tips.recommendations)}
+			</div>
 			<br />
 			<div class="tip-group">
 				<strong>Dangers:</strong>

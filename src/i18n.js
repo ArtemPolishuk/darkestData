@@ -50,19 +50,18 @@ window.DarkestDataI18n = {
               'Bleed',
             ],
             resistances: [
-              'Stun resistance (frontline)',
-              'Move resistance (frontline)',
-              'Bleed resistance (frontline)',
+              'Party: Stun',
+              'Front: Move / Bleed',
             ],
             recommendations: [
-              'Extra Food (!)',
-              'Stun, Move, Guard-break to disrupt common foes',
-              'Armor Piercing for high PROT enemies in region',
-              'Corpse removal to mitigate Bone Bearer`s revival',
+              'Bring extra Food (!)',
+              'Stun / Move / Guard-break are viable tools',
+              // 'Corpse removal partially mitigates Bone Bearer revivals',
+              // 'Armor Piercing is situational',
             ],
             dangers: [
               'Bone Arbalist high damage in backline',
-              'Bone Spearman high damage in frontline to the whole group',
+              'Bone Spearman high damage, party-wide attacks in frontline',
               'Bone Bearer (champion) revives and buffs enemies',
               'Stress from Bone Courtiers / Cultist Acolytes / Madmen / Bookshelf / Stack of Books',
             ]
@@ -70,7 +69,39 @@ window.DarkestDataI18n = {
         },
         warrens: {
           provision: 'Bring food, medicine, and at least one torch per hero. A retribution or bleed resist item helps a lot.',
-          tips: 'Prioritize crowd control, remove plague stacks quickly, and consider a frontline hero that can tank nasty crits.'
+          tips: {
+            enemyTypes: [
+              'Beast (!)',
+              'Human (!)',
+            ],
+            effective: [
+              'Bleed',
+              'DMG vs Beast',
+              'DMG vs Human',
+              'DMG vs Big Enemies',
+            ],
+            ineffective: [
+              'Blight',
+            ],
+            resistances: [
+              'Party: Disease / Stun / Bleed',
+              'Front: Move',
+            ],
+            recommendations: [
+              'Scouting provides the most value (!)',
+              'Avoid being Marked (!)',
+              'Bringing less Food is acceptable (!)',
+              'Can avoid obstacles by just detouring',
+              'stun / move / guard are viable tools',
+            ],
+            dangers: [
+              'Swine Skiver 🚨 (champion) high disruption pressure (stun / move)',
+              'Swine Wretch 🚨 apply disease to heroes',
+              'Swine Drummer 🚨 stress, marks and support',
+              'Large Corpse Eater 🚨 high damage for marked targets',
+              'Stress ☠️ from Swine Wretch 🚨 / Swine Drummer 🚨 / Madman 🚨',
+            ],
+          }
         },
         cove: {
           provision: 'Take bandages, seafood, and blight-cleansing supplies. A stable healing source and stun is valuable.',
