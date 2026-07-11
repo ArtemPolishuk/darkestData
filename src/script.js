@@ -127,8 +127,6 @@ const provisionPriorityGroups = {
 		],
 		[
 			{ name: 'Antivenom', label: 'Antivenom' },
-		],
-		[
 			{ name: 'Bandage', label: 'Bandage' }
 		]
 	],

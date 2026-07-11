@@ -195,21 +195,7 @@ window.DarkestDataCurios = {
             }
           ]
         },
-        {
-          "activator": {
-            "label": "Antivenom",
-            "icon": "img/provision/Antivenom.png"
-          },
-          "outcomes": [
-            {
-              "chances": 100,
-              "type": {
-                "label": "Heirlooms"
-              },
-              "amount": 3
-            }
-          ]
-        }
+
       ]
     },
     {
@@ -1125,21 +1111,7 @@ window.DarkestDataCurios = {
             }
           ]
         },
-        {
-          "activator": {
-            "label": "Antivenom",
-            "icon": "img/provision/Antivenom.png"
-          },
-          "outcomes": [
-            {
-              "chances": 100,
-              "type": {
-                "label": "Heirlooms"
-              },
-              "amount": 3
-            }
-          ]
-        }
+
       ]
     },
     {
@@ -1948,21 +1920,7 @@ window.DarkestDataCurios = {
             }
           ]
         },
-        {
-          "activator": {
-            "label": "Antivenom",
-            "icon": "img/provision/Antivenom.png"
-          },
-          "outcomes": [
-            {
-              "chances": 100,
-              "type": {
-                "label": "Heirlooms"
-              },
-              "amount": 3
-            }
-          ]
-        }
+
       ]
     },
     {
@@ -2652,21 +2610,7 @@ window.DarkestDataCurios = {
             }
           ]
         },
-        {
-          "activator": {
-            "label": "Antivenom",
-            "icon": "img/provision/Antivenom.png"
-          },
-          "outcomes": [
-            {
-              "chances": 100,
-              "type": {
-                "label": "Heirlooms"
-              },
-              "amount": 3
-            }
-          ]
-        }
+
       ]
     },
     {

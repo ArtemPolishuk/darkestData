@@ -54,7 +54,7 @@ window.DarkestDataI18n = {
               'Front: Move / Bleed',
             ],
             recommendations: [
-              'Bring extra Food (!)',
+              'Bring extra Food and Torches (!)',
               'Stun / Move / Guard-break are viable tools',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',
