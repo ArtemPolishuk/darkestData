@@ -149,7 +149,7 @@ footer {
 }
 
 footer p {
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   line-height: 1.35;
 }
 
@@ -1406,6 +1406,12 @@ footer img.footer-flag {
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #000000;
+  padding: 6px 0;
+  margin-top: -6px;
 }
 
 .boss-tab-buttons {
