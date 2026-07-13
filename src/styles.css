@@ -615,7 +615,6 @@ footer img.footer-flag {
 .tip-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.35em;
   font-weight: 900;
 }
 
