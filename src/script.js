@@ -417,7 +417,7 @@ function formatProvisionTotal(value) {
 function formatTipItem(item) {
 	const text = String(item || '');
 	if (/^DMG vs Unholy$/i.test(text)) {
-		return '<span class="tip-trinket"><span class="tip-trinket-label">DMG vs Unholy</span><span class="tip-trinket-card" role="tooltip"><span class="tip-trinket-entity tip-trinket-entity--hero"><span class="tip-trinket-hero-text"><strong>Crusader</strong><span>+35% DMG vs Unholy on main damage skills</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-hero-icon" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span><span class="tip-trinket-entity tip-trinket-entity--trinket"><span class="tip-trinket-text"><span class="tip-trinket-title">Unholy Slayer\'s Ring</span><span class="tip-trinket-stats">+25% DMG vs Unholy<br>-8 DODGE</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-image" src="img/trinkets/Inv_trinket-unholy_slayers_ring.webp" alt="Unholy Slayer\'s Ring"></span></span><span class="tip-trinket-entity tip-trinket-entity--quirk"><span class="tip-trinket-quirk-text"><strong>Unholy Hater</strong><span>+15% DMG and -15% Stress vs Unholy</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-quirk-icon" src="img/effects/Quirkicon_neg.webp" alt=""></span></span><span class="tip-trinket-entity tip-trinket-entity--stun"><span class="tip-trinket-stun-text"><strong>Stuns</strong><span>Stuns</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-stun-icon" src="img/effects/Poptext_stun.webp" alt="Stuns"></span></span></span></span>';
+		return '<span class="tip-trinket"><span class="tip-trinket-label">DMG vs Unholy</span><span class="tip-trinket-card" role="tooltip"><span class="tip-trinket-entity tip-trinket-entity--hero"><span class="tip-trinket-hero-text"><strong>Crusader</strong><span>+35% DMG vs Unholy<br>on main damage skills</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-hero-icon" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span><span class="tip-trinket-entity tip-trinket-entity--trinket"><span class="tip-trinket-text"><span class="tip-trinket-title">Unholy Slayer\'s Ring</span><span class="tip-trinket-stats">+25% DMG vs Unholy<br>-8 DODGE</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-image" src="img/trinkets/Inv_trinket-unholy_slayers_ring.webp" alt="Unholy Slayer\'s Ring"></span></span><span class="tip-trinket-entity tip-trinket-entity--quirk"><span class="tip-trinket-quirk-text"><strong>Unholy Hater</strong><span>+15% DMG vs Unholy<br>-15% Stress vs Unholy</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-quirk-icon" src="img/effects/Quirkicon_neg.webp" alt=""></span></span><span class="tip-trinket-entity tip-trinket-entity--stun"><span class="tip-trinket-stun-text"><strong>Stuns</strong><span>Stuns</span></span><span class="tip-trinket-entity-media"><img class="tip-trinket-stun-icon" src="img/effects/Poptext_stun.webp" alt="Stuns"></span></span></span></span>';
 	}
 	if (/^blight$/i.test(text)) {
 		return '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>';
@@ -432,7 +432,7 @@ function formatTipItem(item) {
 		return text.replace(/\bstress\b/gi, match => `<span class="tip-status tip-status-stress"><span>${match.charAt(0).toUpperCase()}${match.slice(1).toLowerCase()}</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>`);
 	}
 	if (/^crusader$/i.test(text)) {
-		return '<span class="hero-tip"><a class="hero-name" href="https://darkestdungeon.fandom.com/wiki/Crusader" target="_blank" rel="noopener noreferrer">Crusader</a><span class="hero-tip-card" role="tooltip"><span class="hero-tip-text"><span class="hero-tip-title">Crusader</span><span class="hero-tip-stats">+35% DMG vs Unholy on main damage skills</span></span><img class="hero-tip-image" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span>';
+		return '<span class="hero-tip"><a class="hero-name" href="https://darkestdungeon.fandom.com/wiki/Crusader" target="_blank" rel="noopener noreferrer">Crusader</a><span class="hero-tip-card" role="tooltip"><span class="hero-tip-text"><span class="hero-tip-title">Crusader</span><span class="hero-tip-stats">+35% DMG vs Unholy<br>on main damage skills</span></span><img class="hero-tip-image" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span>';
 	}
 	return text;
 }
@@ -694,7 +694,7 @@ function renderProvisionPriority(location) {
 				</a>
 			`).join('')}
 		</div>
-		${groupIndex < groups.length - 1 ? '<div class="provision-priority-arrow">↓</div>' : ''}
+		${groupIndex < groups.length - 1 ? '<div class="provision-priority-arrow">↑</div>' : ''}
 	`).join('');
 }
 
