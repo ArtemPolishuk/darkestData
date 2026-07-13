@@ -784,17 +784,17 @@ function renderRegionTips(tips) {
 				${renderGroup('Effective DMG:', tips.effective)}
 				${renderGroup('Ineffective DMG:', tips.ineffective)}
 			</div>
-			<br />
-			${renderGroup('Resistances to increase:', tips.resistances)}
-			<br />
-			<div class="tip-pair">
+			<div class="tip-layout-grid">
+				<div class="tip-layout-left">
+					${renderGroup('Resistances to increase:', tips.resistances)}
+					${renderGroup('Recommendations:', tips.recommendations)}
+				</div>
 				<div class="tip-group">
 					<strong>Dangers:</strong>
 					<ul>
 						${dangerItems.map(renderDangerItem).join('')}
 					</ul>
 				</div>
-				${renderGroup('Recommendations:', tips.recommendations)}
 			</div>
 		`;
 	}

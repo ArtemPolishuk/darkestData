@@ -612,6 +612,24 @@ footer img.footer-flag {
   margin-bottom: 0;
 }
 
+.tip-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.tip-layout-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tip-layout-left .tip-group {
+  margin-bottom: 0;
+}
+
 .tip-status {
   display: inline-flex;
   align-items: center;
