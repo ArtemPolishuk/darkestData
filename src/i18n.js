@@ -56,10 +56,10 @@ window.DarkestDataI18n = {
               // 'Back :'
             ],
             recommendations: [
-              'Bring +Food (!)',
-              // 'Bring +Bandage or Cure for Bleed',
+              'Extra Food (!)',
+              'Extra Bandage / Cure for Bleed',
               'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
-              'Avoid being Marked',
+              'Avoid being Marked / Guard Marked',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',
             ],
