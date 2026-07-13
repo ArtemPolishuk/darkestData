@@ -789,7 +789,7 @@ function renderRegionTips(tips) {
 					${renderGroup('Resistances to increase:', tips.resistances)}
 					${renderGroup('Recommendations:', tips.recommendations)}
 				</div>
-				<div class="tip-group">
+				<div class="tip-group tip-group--dangers">
 					<strong>Dangers:</strong>
 					<ul>
 						${dangerItems.map(renderDangerItem).join('')}

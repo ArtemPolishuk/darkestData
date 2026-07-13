@@ -594,6 +594,7 @@ footer img.footer-flag {
 
 .tip-danger-sublist li {
   margin-bottom: 2px;
+  font-size: 0.75em;
 }
 
 .tip-danger-sublist li::before {
@@ -628,6 +629,23 @@ footer img.footer-flag {
 
 .tip-layout-left .tip-group {
   margin-bottom: 0;
+}
+
+.tip-group--dangers > ul > li {
+  margin-bottom: 8px;
+}
+
+.tip-group--dangers > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 700px) and (max-width: 1100px) {
+  .tip-group--dangers > ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px 12px;
+    align-items: start;
+  }
 }
 
 .tip-status {
