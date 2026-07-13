@@ -52,23 +52,26 @@ window.DarkestDataI18n = {
             ],
             resistances: [
               // 'Party :',
-              'Frontline : Stun / Move / Bleed',
+              { label: 'Frontline', notes: ['Stun', 'Move', 'Bleed'] },
+              // 'Frontline : Stun / Move / Bleed',
               // 'Back :'
             ],
             recommendations: [
               'Extra Food (!)',
               'Extra Bandage / Cure for Bleed',
-              'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
               'Avoid being Marked / Guard Marked',
+              { label: 'Viable disruption tools are', notes: ['Stun', 'Move', 'Guard-break', 'Corpse removal'] },
+              // 'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',
             ],
             dangers: [
-              'Bone Bearer - revives and buffs enemies',
-              'Bone Spearman - AoE DMG in frontline; Knockback',
-              'Bone Arbalist - high DMG in backline; DMG vs Marked',
-              'Bone Defender - Knockback / Stun frontline; Guard allies',
-              'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
+              { label: 'Bone Bearer', notes: ['Revives corpses', 'Buff enemies'] },
+              { label: 'Bone Spearman', notes: ['AoE DMG in frontline', 'Knockback'] },
+              { label: 'Bone Arbalist', notes: ['High DMG in backline', 'DMG vs Marked'] },
+              { label: 'Bone Defender', notes: ['Knockback / Stun frontline', 'Guard allies'] },
+              { label: 'Stress from', notes: ['Bone Courtiers', 'Cultist Acolytes', 'Madmen'] },
+              // 'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
             ]
           }
         },

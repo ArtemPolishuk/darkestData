@@ -616,6 +616,7 @@ footer img.footer-flag {
   display: inline-flex;
   align-items: center;
   font-weight: 900;
+  margin: 0;
 }
 
 .tip-status-icon {
@@ -679,6 +680,16 @@ footer img.footer-flag {
 
 .tip-status-guard {
   color: #7ab3c8;
+}
+
+.tip-status-buff {
+  color: #5cb8d8;
+}
+
+.tip-status-icon--buff {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
 }
 
 .tip-status-corpse-removal {

@@ -462,6 +462,7 @@ function applyInlineIcons(html) {
 		[/(\bPush\b)/gi,        '<span class="tip-status tip-status-move"><span>Push</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bBleed\b)/gi,       '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bBlight\b)/gi,      '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>'],
+		[/\bBuff\b/gi,          '<span class="tip-status tip-status-buff"><span>Buff</span><img class="tip-status-icon tip-status-icon--buff" src="img/effects/Buff.curio_tracker.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bStress\b)/gi,      '<span class="tip-status tip-status-stress"><span>Stress</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bFood\b)/gi,        '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>'],
 		[/(\bBandages?\b)/gi,   '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Bandage" target="_blank" rel="noopener noreferrer">Bandage</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Bandage.png" alt="Bandage"></span></span>'],
@@ -700,6 +701,20 @@ function renderProvisionPriority(location) {
 
 function renderRegionTips(tips) {
 	if (tips && typeof tips === 'object' && !Array.isArray(tips)) {
+		const renderGroupItem = item => {
+			if (item && typeof item === 'object' && !Array.isArray(item)) {
+				const label = String(item.label || '');
+				const notes = Array.isArray(item.notes) ? item.notes : [];
+				return `
+					<li class="tip-group-item-parent">
+						${formatFullTipText(label)}
+						${notes.length ? `<ul class="tip-danger-sublist">${notes.map(note => `<li>${formatFullTipText(String(note || ''))}</li>`).join('')}</ul>` : ''}
+					</li>
+				`;
+			}
+			return `<li>${formatFullTipText(item)}</li>`;
+		};
+
 		const renderGroup = (title, items) => {
 			if (!Array.isArray(items) || !items.length) {
 				return '';
@@ -709,7 +724,7 @@ function renderRegionTips(tips) {
 			<div class="tip-group">
 				<strong>${title}</strong>
 				<ul>
-					${items.map(item => `<li>${formatFullTipText(item)}</li>`).join('')}
+					${items.map(renderGroupItem).join('')}
 				</ul>
 			</div>
 			`;
@@ -736,6 +751,16 @@ function renderRegionTips(tips) {
 		];
 
 		const renderDangerItem = item => {
+			if (item && typeof item === 'object' && !Array.isArray(item)) {
+				const label = String(item.label || '');
+				const notes = Array.isArray(item.notes) ? item.notes : [];
+				return `
+					<li class="tip-danger-parent">
+						${formatFullTipText(label)}
+						${notes.length ? `<ul class="tip-danger-sublist">${notes.map(note => `<li>${formatFullTipText(String(note || ''))}</li>`).join('')}</ul>` : ''}
+					</li>
+				`;
+			}
 			const text = String(item || '');
 			const stressMatch = text.match(/^(Stress)\s+from\s+(.+?)(\s+enemies?)?$/i);
 			if (!stressMatch) {
@@ -759,16 +784,17 @@ function renderRegionTips(tips) {
 				${renderGroup('Effective DMG:', tips.effective)}
 				${renderGroup('Ineffective DMG:', tips.ineffective)}
 			</div>
-			<div class="tip-pair">
-				${renderGroup('Resistances to increase:', tips.resistances)}
-				${renderGroup('Recommendations:', tips.recommendations)}
-			</div>
 			<br />
-			<div class="tip-group">
-				<strong>Dangers:</strong>
-				<ul>
-					${dangerItems.map(renderDangerItem).join('')}
-				</ul>
+			${renderGroup('Resistances to increase:', tips.resistances)}
+			<br />
+			<div class="tip-pair">
+				<div class="tip-group">
+					<strong>Dangers:</strong>
+					<ul>
+						${dangerItems.map(renderDangerItem).join('')}
+					</ul>
+				</div>
+				${renderGroup('Recommendations:', tips.recommendations)}
 			</div>
 		`;
 	}
