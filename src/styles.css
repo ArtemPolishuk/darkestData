@@ -654,7 +654,7 @@ footer img.footer-flag {
 }
 
 .tip-status-move {
-  color: #4ea3ff;
+  color: #3080d0;
 }
 
 .tip-status-stun {
@@ -671,6 +671,19 @@ footer img.footer-flag {
 
 .tip-status-stress .tip-status-icon {
   filter: brightness(1.9) saturate(1.35);
+}
+
+.tip-status-mark,
+.tip-status-marks {
+  color: #8b1a1a;
+}
+
+.tip-status-guard {
+  color: #7ab3c8;
+}
+
+.tip-status-corpse-removal {
+  color: #ffffff;
 }
 
 .tip-recommendation-status {

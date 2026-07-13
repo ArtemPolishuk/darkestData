@@ -201,6 +201,7 @@ const enemyWikiLinks = {
 	'Bone Bearer': 'https://darkestdungeon.fandom.com/wiki/Bone_Bearer',
 	'Bone Arbalist': 'https://darkestdungeon.fandom.com/wiki/Bone_Arbalist',
 	'Bone Courtier': 'https://darkestdungeon.fandom.com/wiki/Bone_Courtier',
+	'Bone Defender': 'https://darkestdungeon.fandom.com/wiki/Bone_Defender',
 	'Bone Spearman': 'https://darkestdungeon.fandom.com/wiki/Bone_Spearman',
 	'Cultist Acolyte': 'https://darkestdungeon.fandom.com/wiki/Cultist_Acolyte',
 	'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman'
@@ -450,10 +451,45 @@ function formatResistanceText(text) {
 		});
 }
 
+// Replaces status keywords with icon spans, only outside HTML tags
+function applyInlineIcons(html) {
+	const replacements = [
+		[/(\bGuard-break\b)/gi, '<span class="tip-status tip-status-guardbreak"><span>Guard-break</span><img class="tip-status-icon" src="img/effects/Poptext_guard_break.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bGuard(?!-)\b)/gi, '<span class="tip-status tip-status-guard"><span>Guard</span><img class="tip-status-icon" src="img/effects/Poptext_guard.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bStun\b)/gi,        '<span class="tip-status tip-status-stun"><span>Stun</span><img class="tip-status-icon" src="img/effects/Poptext_stun.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bMove\b)/gi,        '<span class="tip-status tip-status-move"><span>Move</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bKnockback\b)/gi,   '<span class="tip-status tip-status-move"><span>Knockback</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bPush\b)/gi,        '<span class="tip-status tip-status-move"><span>Push</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bBleed\b)/gi,       '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bBlight\b)/gi,      '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bStress\b)/gi,      '<span class="tip-status tip-status-stress"><span>Stress</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bFood\b)/gi,        '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>'],
+		[/(\bBandages?\b)/gi,   '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Bandage" target="_blank" rel="noopener noreferrer">Bandage</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Bandage.png" alt="Bandage"></span></span>'],
+		[/(\bMarks\b)/gi,       '<span class="tip-status tip-status-marks"><span>Marks</span><img class="tip-status-icon" src="img/effects/Poptext_tagged.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bMarked\b)/gi,        '<span class="tip-status tip-status-mark"><span>Marked</span><img class="tip-status-icon" src="img/effects/Tagdamage.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bCorpse removal\b)/gi, '<span class="tip-status tip-status-corpse-removal"><span>Corpse removal</span></span>'],
+	];
+	let result = html;
+	for (const [pattern, replacement] of replacements) {
+		result = result.replace(new RegExp(`(<[^>]*>)|${pattern.source}`, pattern.flags), (m, tag) => tag || replacement);
+	}
+	return result;
+}
+
+// Unified formatter: exact-match standalone items first, then full pipeline for rich text
+function formatFullTipText(text) {
+	const raw = String(text || '');
+	const standalone = formatTipItem(raw);
+	if (standalone !== raw) return standalone;
+	const withLinks = formatEnemyText(formatCurioText(formatDangerText(raw)));
+	return applyInlineIcons(withLinks);
+}
+
 function formatDangerText(text) {
 	return String(text || '')
 		.replace(/(Bone Arbalists?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Arbalist']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Arbalist.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Bone Courtiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Courtier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Courtier.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Bone Defenders?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Defender']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Defender_attack_shield.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
@@ -470,11 +506,12 @@ function formatCurioText(text) {
 function formatRecommendationText(text) {
 	const recommendationText = escapeHtml(String(text || ''))
 		.replace(/\bFood\b/gi, '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>')
+		.replace(/\bBandages?\b/gi, m => `<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Bandage" target="_blank" rel="noopener noreferrer">${m}</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Bandage.png" alt="Bandage"></span></span>`)
 		.replace(/\bStun\b/gi, '<span class="tip-status tip-status-stun tip-recommendation-status"><span>Stun</span><img class="tip-status-icon" src="img/effects/Poptext_stun.webp" alt="" aria-hidden="true"></span>')
 		.replace(/\bMove\b/gi, '<span class="tip-status tip-status-move tip-recommendation-status"><span>Move</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>')
 		.replace(/\bGuard-break\b/gi, '<span class="tip-status tip-status-guardbreak tip-recommendation-status"><span>Guard-break</span><img class="tip-status-icon" src="img/effects/Poptext_guard_break.webp" alt="" aria-hidden="true"></span>')
 		.replace(/\bArmor piercing\b/gi, 'Armor piercing')
-		.replace(/\bCorpse removal\b/gi, 'Corpse removal');
+		.replace(/\bCorpse removal\b/gi, '<span class="tip-status tip-status-corpse-removal"><span>Corpse removal</span></span>');
 
 	return `<span class="tip-recommendation-status">${recommendationText}</span>`;
 }
@@ -668,12 +705,11 @@ function renderRegionTips(tips) {
 				return '';
 			}
 
-			const shouldFormat = title === 'Dangers:' || title === 'Recommendations:';
 			return `
 			<div class="tip-group">
 				<strong>${title}</strong>
 				<ul>
-					${items.map(item => `<li>${title === 'Recommendations:' ? formatRecommendationText(item) : title === 'Resistances to increase:' ? formatResistanceText(item) : shouldFormat ? formatTipItem(formatEnemyText(formatCurioText(formatDangerText(item)))) : formatTipItem(item)}</li>`).join('')}
+					${items.map(item => `<li>${formatFullTipText(item)}</li>`).join('')}
 				</ul>
 			</div>
 			`;
@@ -703,7 +739,7 @@ function renderRegionTips(tips) {
 			const text = String(item || '');
 			const stressMatch = text.match(/^(Stress)\s+from\s+(.+?)(\s+enemies?)?$/i);
 			if (!stressMatch) {
-				return `<li>${formatTipItem(formatEnemyText(formatCurioText(formatDangerText(text))))}</li>`;
+				return `<li>${formatFullTipText(text)}</li>`;
 			}
 			if (stressRendered) {
 				return '';
@@ -712,7 +748,7 @@ function renderRegionTips(tips) {
 
 			return `
 				<li class="tip-danger-parent">
-					<span class="tip-danger-stress"><span class="tip-danger-stress-label">${escapeHtml(stressMatch[1])}</span><img class="tip-danger-stress-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span> from ${stressTargets.map(target => formatTipItem(formatEnemyText(formatCurioText(formatDangerText(target))))).join(' / ')}
+					<span class="tip-danger-stress"><span class="tip-danger-stress-label">${escapeHtml(stressMatch[1])}</span><img class="tip-danger-stress-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span> from ${stressTargets.map(target => formatFullTipText(target)).join(' / ')}
 				</li>
 			`;
 		};

@@ -11,7 +11,7 @@ window.DarkestDataI18n = {
       chooseLevel: 'Choose level:',
       provisionHeading: 'Provision',
       provisionPriorityHeading: 'Priority',
-      tipsHeading: 'Tips',
+      tipsHeading: 'Combat Tips',
       bossTabsLabel: 'Boss comps tabs',
       curiosTab: 'Curios',
       bossesTab: 'Bosses (TBD)',
@@ -45,25 +45,30 @@ window.DarkestDataI18n = {
             effective: [
               'Blight',
               'DMG vs Unholy',
+              'Physical DMG'
             ],
             ineffective: [
               'Bleed',
             ],
             resistances: [
-              'Party: Stun',
-              'Front: Move / Bleed',
+              // 'Party :',
+              'Frontline : Stun / Move / Bleed',
+              // 'Back :'
             ],
             recommendations: [
-              'Bring extra Food and Torches (!)',
-              'Stun / Move / Guard-break are viable tools',
+              'Bring +Food (!)',
+              // 'Bring +Bandage or Cure for Bleed',
+              'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
+              'Avoid being Marked',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',
             ],
             dangers: [
-              'Bone Arbalist high damage in backline',
-              'Bone Spearman high damage, party-wide attacks in frontline',
-              'Bone Bearer (champion) revives and buffs enemies',
-              'Stress from Bone Courtiers / Cultist Acolytes / Madmen / Bookshelf / Stack of Books',
+              'Bone Bearer - revives and buffs enemies',
+              'Bone Spearman - AoE DMG in frontline; Knockback',
+              'Bone Arbalist - high DMG in backline; DMG vs Marked',
+              'Bone Defender - Knockback / Stun frontline; Guard allies',
+              'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
             ]
           }
         },
@@ -150,7 +155,7 @@ window.DarkestDataI18n = {
       chooseLevel: 'Оберіть рівень:',
       provisionHeading: 'Провізія',
       provisionPriorityHeading: 'Пріоритет',
-      tipsHeading: 'Поради',
+      tipsHeading: 'Бойові поради',
       bossTabsLabel: 'Вкладки босів',
       curiosTab: 'Курйози',
       bossesTab: 'Боси',
