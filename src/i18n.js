@@ -52,17 +52,18 @@ window.DarkestDataI18n = {
             ],
             resistances: [
               // { label: 'Party', notes: ['Stun / Move / Bleed',] },
-              { label: 'Frontline', notes: ['Stun / Move / Bleed',] },
+              { label: 'Frontline', notes: ['Stun / Move', 'Bleed'] },
               // { label: 'Backline', notes: ['Stun / Move / Bleed',] },
 
               // 'Frontline : Stun / Move / Bleed',
               // 'Back :'
             ],
             recommendations: [
-              'Extra Food (!)',
+              { label: 'Extra Food (!)', notes: ['No curios providing food'] },
+              // 'Extra Food (!)',
+              { label: 'Avoid being Marked', notes: ['You can be focus fired by some enemies']},
               'Extra Bandage / Cure for Bleed',
-              'Avoid being Marked',
-              { label: 'Viable disruption tools are', notes: ['Stun', 'Move', 'Guard-break', 'Corpse removal'] },
+              { label: 'Viable disruption tools are', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
               // 'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',

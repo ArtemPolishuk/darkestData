@@ -529,7 +529,7 @@ footer img.footer-flag {
 }
 
 .region-tips li::before {
-  content: '•';
+  content: '';
   position: absolute;
   left: 0;
   color: inherit;
@@ -568,7 +568,6 @@ footer img.footer-flag {
 
 .tip-danger-stress {
   color: #f2f2f2;
-  font-weight: 900;
 }
 
 .tip-danger-stress-label {
@@ -588,7 +587,11 @@ footer img.footer-flag {
 }
 
 .tip-danger-sublist {
-  margin: 2px 0 0 0;
+  padding: 0;
+}
+
+.region-tips .tip-danger-sublist {
+  margin: 2px 0 0 1em;
   padding: 0;
 }
 
@@ -598,7 +601,7 @@ footer img.footer-flag {
 }
 
 .tip-danger-sublist li::before {
-  content: '-';
+  content: '•';
 }
 
 .tip-pair {
@@ -619,6 +622,9 @@ footer img.footer-flag {
   gap: 12px;
   align-items: start;
   margin-bottom: 8px;
+  border-top: 1px solid #5c1c12;
+  padding-top: 10px;
+  margin-top: 10px;
 }
 
 .tip-layout-left {
@@ -633,6 +639,11 @@ footer img.footer-flag {
 
 .tip-group--dangers > ul > li {
   margin-bottom: 8px;
+}
+
+.tip-layout-grid > .tip-group--dangers {
+  border-left: 1px solid #5c1c12;
+  padding-left: 12px;
 }
 
 .tip-group--dangers > ul > li:last-child {
@@ -651,7 +662,6 @@ footer img.footer-flag {
 .tip-status {
   display: inline-flex;
   align-items: center;
-  font-weight: 900;
   margin: 0;
 }
 
