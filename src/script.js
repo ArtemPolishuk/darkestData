@@ -787,6 +787,7 @@ function renderRegionTips(tips) {
 			<div class="tip-layout-grid">
 				<div class="tip-layout-left">
 					${renderGroup('Resistances to increase:', tips.resistances)}
+					<hr class="tip-divider">
 					${renderGroup('Recommendations:', tips.recommendations)}
 				</div>
 				<div class="tip-group tip-group--dangers">

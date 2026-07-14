@@ -20,23 +20,23 @@ window.DarkestData = {
         mid: {
           items: [
             { image: 'img/provision/Firewood.png', count: 1 },
-            { image: 'img/provision/Food.png', count: 18 },
+            { image: 'img/provision/Food.png', count: 20 },
             { image: 'img/provision/Torch.png', count: 12 },
             { image: 'img/provision/Shovel.png', count: 3 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
             { image: 'img/provision/Holy_Water.png', count: 3 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 1 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
           ]
         },
         long: {
           items: [
             { image: 'img/provision/Firewood.png', count: 2 },
-            { image: 'img/provision/Food.png', count: 24 },
+            { image: 'img/provision/Food.png', count: 28 },
             { image: 'img/provision/Torch.png', count: 16 },
             { image: 'img/provision/Shovel.png', count: 4 },
-            { image: 'img/provision/Skeleton_Key.png', count: 3 },
+            { image: 'img/provision/Skeleton_Key.png', count: 4 },
             { image: 'img/provision/Holy_Water.png', count: 4 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
           ]
         }
       }
