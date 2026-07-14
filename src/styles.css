@@ -750,6 +750,14 @@ footer img.footer-flag {
   color: #ffffff;
 }
 
+.tip-status-disease {
+  color: #5d7e12;
+}
+
+.tip-status-scouting {
+  color: #a070d8;
+}
+
 .tip-recommendation-status {
   text-shadow:
     -1px -1px 0 #000,
@@ -783,7 +791,7 @@ footer img.footer-flag {
   gap: 10px;
   width: max-content;
   max-width: min(380px, calc(100vw - 24px));
-  max-height: min(320px, calc(100vh - 24px));
+  max-height: min(420px, calc(100vh - 24px));
   overflow-y: auto;
   padding: 12px 14px;
   transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));

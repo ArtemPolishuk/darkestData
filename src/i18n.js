@@ -41,6 +41,7 @@ window.DarkestDataI18n = {
             enemyTypes: [
               'Unholy (!)', 
               'Human',
+              'Stonework',
             ],
             effective: [
               'Blight',
@@ -52,14 +53,11 @@ window.DarkestDataI18n = {
             ],
             resistances: [
               // { label: 'Party', notes: ['Stun / Move / Bleed',] },
-              { label: 'Frontline', notes: ['Stun / Move', 'Bleed'] },
-              // { label: 'Backline', notes: ['Stun / Move / Bleed',] },
+              { label: 'Frontline:', notes: ['Stun / Move', 'Bleed'] },
             ],
             recommendations: [
-              { label: 'Extra Food (!)'},
-              // 'Extra Food (!)',
+              { label: 'Extra Bandage / Cure Bleed'},
               { label: 'Avoid being Marked'},
-              { label: 'Extra Bandage / Cure for Bleed'},
               { label: 'Viable disruption tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
               // 'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
@@ -86,21 +84,25 @@ window.DarkestDataI18n = {
               'Bleed',
               'DMG vs Beast',
               'DMG vs Human',
-              'DMG vs Big Enemies',
+              // 'DMG vs Big Sized',
             ],
             ineffective: [
               'Blight',
             ],
             resistances: [
-              'Party: Disease / Stun / Bleed',
-              'Front: Move',
+              // { label: 'Party', notes: ['Disease / Stun'] },
+
+              // 'Party: Disease / Stun / Bleed',
+              { label: 'Frontline:', notes: ['Stun / Move', 'Bleed / Disease'] },
+              { label: 'Backline:', notes: ['Stun / Move', 'Disease'] },
+
             ],
             recommendations: [
-              'Scouting provides the most value (!)',
               'Avoid being Marked (!)',
-              'Bringing less Food is acceptable (!)',
-              'Can avoid obstacles by just detouring',
-              'stun / move / guard are viable tools',
+              'Lift up Scouting (!)',
+              { label: 'Extra Bandage / Cure Bleed'},
+              { label: 'Extra Antivenom / Cure Blight'},
+              { label: 'Viable disruption tools are:', notes: ['Stun / Move', 'Guard'] },
             ],
             dangers: [
               'Swine Skiver 🚨 (champion) high disruption pressure (stun / move)',
