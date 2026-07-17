@@ -21,7 +21,7 @@ window.DarkestData = {
           items: [
             { image: 'img/provision/Firewood.png', count: 1 },
             { image: 'img/provision/Food.png', count: 20 },
-            { image: 'img/provision/Torch.png', count: 12 },
+            { image: 'img/provision/Torch.png', count: 16 },
             { image: 'img/provision/Shovel.png', count: 3 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
             { image: 'img/provision/Holy_Water.png', count: 3 },
@@ -32,7 +32,7 @@ window.DarkestData = {
           items: [
             { image: 'img/provision/Firewood.png', count: 2 },
             { image: 'img/provision/Food.png', count: 28 },
-            { image: 'img/provision/Torch.png', count: 16 },
+            { image: 'img/provision/Torch.png', count: 24 },
             { image: 'img/provision/Shovel.png', count: 4 },
             { image: 'img/provision/Skeleton_Key.png', count: 4 },
             { image: 'img/provision/Holy_Water.png', count: 4 },
@@ -49,38 +49,38 @@ window.DarkestData = {
       provisionGrid: {
         short: {
           items: [
-            { image: 'img/provision/Food.png', count: 10 },
+            { image: 'img/provision/Food.png', count: 12 },
             { image: 'img/provision/Torch.png', count: 8 },
+            { image: 'img/provision/Shovel.png', count: 2 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
-            { image: 'img/provision/Skeleton_Key.png', count: 2 },
-            { image: 'img/provision/Holy_Water.png', count: 1 },
             { image: 'img/provision/Bandage.png', count: 1 },
-            { image: 'img/provision/Shovel.png', count: 1 }
+            { image: 'img/provision/Skeleton_Key.png', count: 1 },
+            { image: 'img/provision/Holy_Water.png', count: 1 },
           ]
         },
         mid: {
           items: [
             { image: 'img/provision/Firewood.png', count: 1 },
             { image: 'img/provision/Food.png', count: 16 },
-            { image: 'img/provision/Torch.png', count: 12 },
+            { image: 'img/provision/Torch.png', count: 16 },
+            { image: 'img/provision/Shovel.png', count: 3 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
-            { image: 'img/provision/Skeleton_Key.png', count: 3 },
-            { image: 'img/provision/Holy_Water.png', count: 2 },
             { image: 'img/provision/Bandage.png', count: 2 },
-            { image: 'img/provision/Shovel.png', count: 1 }
+            { image: 'img/provision/Skeleton_Key.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 2 },
           ]
         },
         long: {
           totalPrice: 6800,
           items: [
             { image: 'img/provision/Firewood.png', count: 2 },
-            { image: 'img/provision/Food.png', count: 20 },
-            { image: 'img/provision/Torch.png', count: 16 },
+            { image: 'img/provision/Food.png', count: 24 },
+            { image: 'img/provision/Torch.png', count: 24 },
+            { image: 'img/provision/Shovel.png', count: 4 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 5 },
+            { image: 'img/provision/Bandage.png', count: 3 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
             { image: 'img/provision/Holy_Water.png', count: 2 },
-            { image: 'img/provision/Bandage.png', count: 3 },
-            { image: 'img/provision/Shovel.png', count: 2 }
           ]
         }
       },

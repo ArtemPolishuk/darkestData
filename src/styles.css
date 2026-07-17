@@ -658,6 +658,18 @@ footer img.footer-flag {
   margin-bottom: 0;
 }
 
+.tip-group--resistances > ul,
+.tip-group--recommendations > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2px 12px;
+  align-items: start;
+}
+
+.tip-group--recommendations > ul > li::before {
+  content: '';
+}
+
 @media (min-width: 700px) and (max-width: 1100px) {
   .tip-group--dangers > ul {
     display: grid;
@@ -756,6 +768,10 @@ footer img.footer-flag {
 
 .tip-status-scouting {
   color: #a070d8;
+}
+
+.tip-status-stealth {
+  color: #7a67c2;
 }
 
 .tip-recommendation-status {

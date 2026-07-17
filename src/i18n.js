@@ -11,7 +11,7 @@ window.DarkestDataI18n = {
       chooseLevel: 'Choose level:',
       provisionHeading: 'Provision',
       provisionPriorityHeading: 'Priority',
-      tipsHeading: 'Combat Tips',
+      tipsHeading: 'Tips',
       bossTabsLabel: 'Boss comps tabs',
       curiosTab: 'Curios',
       bossesTab: 'Bosses (TBD)',
@@ -41,35 +41,36 @@ window.DarkestDataI18n = {
             enemyTypes: [
               'Unholy (!)', 
               'Human',
-              'Stonework',
             ],
             effective: [
               'Blight',
               'DMG vs Unholy',
-              'Physical DMG'
             ],
             ineffective: [
               'Bleed',
             ],
             resistances: [
               // { label: 'Party', notes: ['Stun / Move / Bleed',] },
-              { label: 'Frontline:', notes: ['Stun / Move', 'Bleed'] },
+              { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed'] },
+              { label: 'Backline:', notes: ['Stun'] },
             ],
             recommendations: [
-              { label: 'Extra Bandage / Cure Bleed'},
-              { label: 'Avoid being Marked'},
-              { label: 'Viable disruption tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
+              // { label: 'Avoid being Marked'},
+              { label: 'Bring extra Food' },
+              // { label: 'Bring cures for:', notes: ['Bleed'] },
+              { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
               // 'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
               // 'Corpse removal partially mitigates Bone Bearer revivals',
               // 'Armor Piercing is situational',
             ],
             dangers: [
               { label: 'Bone Bearer', notes: ['Revives corpses', 'Buff enemies'] },
-              { label: 'Bone Spearman', notes: ['AoE DMG in frontline'] },
-              { label: 'Bone Arbalist', notes: ['High DMG in backline', 'DMG vs Marked'] },
+              { label: 'Bone Captain', notes: ['High DMG from frontline', 'Party-wide Stun'] },
               { label: 'Bone Defender', notes: ['Move / Stun frontline', 'Guard allies'] },
-              { label: 'Stress from:', notes: ['Bone Courtiers', 'Cultist Acolytes', 'Madmen'] },
-              // 'Stress from Bone Courtiers / Cultist Acolytes / Madmen',
+              { label: 'Bone Spearman', notes: ['Party-wide DMG from frontline'] },
+              { label: 'Bone Arbalist', notes: ['High DMG from backline', 'DMG vs Marked'] },
+              // { label: 'Bone Soldier', notes: ['Starts in Stealth'] },
+              { label: 'Stress from:', notes: ['Bone Courtiers', 'Cultist Acolytes', 'Madman'] },
             ]
           }
         },
@@ -93,23 +94,25 @@ window.DarkestDataI18n = {
               // { label: 'Party', notes: ['Disease / Stun'] },
 
               // 'Party: Disease / Stun / Bleed',
-              { label: 'Frontline:', notes: ['Stun / Move', 'Bleed / Disease'] },
-              { label: 'Backline:', notes: ['Stun / Move', 'Disease'] },
+              // { label: 'Party:', notes: ['Stun / Move', 'Bleed / Blight / Disease'] },
+              { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed / Disease'] },
+              { label: 'Backline:', notes: ['Stun (!)', 'Blight / Disease'] },
 
             ],
             recommendations: [
-              'Avoid being Marked (!)',
-              'Lift up Scouting (!)',
-              { label: 'Extra Bandage / Cure Bleed'},
-              { label: 'Extra Antivenom / Cure Blight'},
-              { label: 'Viable disruption tools are:', notes: ['Stun / Move', 'Guard'] },
+              'Avoid being Marked',
+              // { label: 'Bring cures for:', notes: ['Bleed', 'Blight', 'Disease'] },
+              'Increase Scouting',
+              { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard'] },
             ],
             dangers: [
-              'Swine Skiver 🚨 (champion) high disruption pressure (stun / move)',
-              'Swine Wretch 🚨 apply disease to heroes',
-              'Swine Drummer 🚨 stress, marks and support',
-              'Large Corpse Eater 🚨 high damage for marked targets',
-              'Stress ☠️ from Swine Wretch 🚨 / Swine Drummer 🚨 / Madman 🚨',
+              { label: 'Swine Skiver', notes: ['Move / Stun frontline'] },
+              { label: 'Large Corpse Eater', notes: ['Applies Marks', 'DMG vs Marked'] },
+              { label: 'Swine Wretch', notes: ['Inflicts Disease'] },
+              { label: 'Swine Drummer', notes: ['Applies Marks'] },
+              { label: 'Swinetaur', notes: ['Move / Stun frontline', 'High DMG from backline'] },
+              { label: 'Stress from:', notes: ['Swine Wretch ', 'Swine Drummer ', 'Madman', 'Cultist Acolyte'] },
+
             ],
           }
         },

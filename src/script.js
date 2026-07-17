@@ -135,17 +135,15 @@ const provisionPriorityGroups = {
 			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
 		],
 		[
-			{ name: 'Skeleton_Key', label: 'Skeleton key' }
+			{ name: 'Bandage', label: 'Bandage' },
+			{ name: 'Shovel', label: 'Shovel' }
 		],
 		[
-			{ name: 'Holy_Water', label: 'Holy water' },
-			{ name: 'Bandage', label: 'Bandage' }
+			{ name: 'Skeleton_Key', label: 'Skeleton key' },
+			{ name: 'Holy_Water', label: 'Holy water' }
 		],
 		[
 			{ name: 'Antivenom', label: 'Antivenom' }
-		],
-		[
-			{ name: 'Shovel', label: 'Shovel' }
 		]
 	],
 	cove: [
@@ -204,7 +202,14 @@ const enemyWikiLinks = {
 	'Bone Defender': 'https://darkestdungeon.fandom.com/wiki/Bone_Defender',
 	'Bone Spearman': 'https://darkestdungeon.fandom.com/wiki/Bone_Spearman',
 	'Cultist Acolyte': 'https://darkestdungeon.fandom.com/wiki/Cultist_Acolyte',
-	'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman'
+	'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman',
+	'Swine Wretch': 'https://darkestdungeon.fandom.com/wiki/Swine_Wretch',
+	'Swine Drummer': 'https://darkestdungeon.fandom.com/wiki/Swine_Drummer',
+	'Large Corpse Eater': 'https://darkestdungeon.fandom.com/wiki/Carrion_Eater',
+	'Swine Skiver': 'https://darkestdungeon.fandom.com/wiki/Swine_Skiver',
+	'Swinetaur': 'https://darkestdungeon.fandom.com/wiki/Swinetaur',
+	'Bone Soldier': 'https://darkestdungeon.fandom.com/wiki/Bone_Soldier',
+	'Bone Captain': 'https://darkestdungeon.fandom.com/wiki/Bone_Captain'
 };
 
 const storageKeys = {
@@ -479,6 +484,7 @@ function applyInlineIcons(html) {
 		[/(\bCorpse removal\b)/gi, '<span class="tip-status tip-status-corpse-removal"><span>Corpse removal</span></span>'],
 		[/\bDisease\b/gi,   '<span class="tip-status tip-status-disease"><span>Disease</span><img class="tip-status-icon" src="img/effects/Poptext_disease.webp" alt="" aria-hidden="true"></span>'],
 		[/\bScouting\b/gi,  '<span class="tip-status tip-status-scouting"><span>Scouting</span><img class="tip-status-icon" src="img/effects/Scout_Ahead.webp" alt="" aria-hidden="true"></span>'],
+		[/\bStealth\b/gi,   '<span class="tip-status tip-status-stealth"><span>Stealth</span><img class="tip-status-icon" src="img/effects/Tray_stealth.webp" alt="" aria-hidden="true"></span>'],
 	];
 	let result = html;
 	for (const [pattern, replacement] of replacements) {
@@ -503,7 +509,12 @@ function formatDangerText(text) {
 		.replace(/(Bone Defenders?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Defender']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Defender_attack_shield.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Bone Spearman?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Spearman']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Solider.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Cultist Acolytes?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Cultist Acolyte']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Cultist_Acolyte.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
-		.replace(/(Madmen)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Madman)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Swine Wretch\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Wretch']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Wretch.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Swine Drummer\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Drummer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Drummer.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Large Corpse Eater\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Large Corpse Eater']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Carrion_Big.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Swine Skiver\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Skiver']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Skiver.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Swinetaur\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swinetaur']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swinetaur.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
@@ -530,6 +541,8 @@ function formatRecommendationText(text) {
 function formatEnemyText(text) {
 	return String(text || '')
 		.replace(/(Bone Bearer)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Bearer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Bearer.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Bone Soldiers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Soldier']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Bone_Militia.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Bone Captains?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Bone Captain']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/BoneCaptainAttack1.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/\s+,/g, ',');
 }
 
@@ -725,13 +738,13 @@ function renderRegionTips(tips) {
 			return `<li>${formatFullTipText(item)}</li>`;
 		};
 
-		const renderGroup = (title, items) => {
+		const renderGroup = (title, items, extraClass = '') => {
 			if (!Array.isArray(items) || !items.length) {
 				return '';
 			}
 
 			return `
-			<div class="tip-group">
+			<div class="tip-group${extraClass ? ' ' + extraClass : ''}">
 				<strong>${title}</strong>
 				<ul>
 					${items.map(renderGroupItem).join('')}
@@ -796,9 +809,9 @@ function renderRegionTips(tips) {
 			</div>
 			<div class="tip-layout-grid">
 				<div class="tip-layout-left">
-					${renderGroup('Resistances to increase:', tips.resistances)}
-					<hr class="tip-divider">
-					${renderGroup('Recommendations:', tips.recommendations)}
+				${renderGroup('Resistances to increase:', tips.resistances, 'tip-group--resistances')}
+				<hr class="tip-divider">
+				${renderGroup('Recommendations:', tips.recommendations, 'tip-group--recommendations')}
 				</div>
 				<div class="tip-group tip-group--dangers">
 					<strong>Dangers:</strong>
