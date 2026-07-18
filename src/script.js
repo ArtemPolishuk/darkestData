@@ -883,3 +883,13 @@ renderStaticText();
 setBossTab(readStoredValue(storageKeys.tab) || 'curios');
 updateRegionDisplay();
 setupTooltipPositioning();
+
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+function updateScrollTopBtn() {
+	scrollTopBtn.hidden = bossTabs.getBoundingClientRect().top > 0;
+}
+window.addEventListener('scroll', updateScrollTopBtn, { passive: true });
+updateScrollTopBtn();
+scrollTopBtn.addEventListener('click', () => {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+});

@@ -148,6 +148,44 @@ footer {
   text-align: center;
 }
 
+.scroll-top-btn {
+  position: fixed;
+  bottom: 72px;
+  right: 72px;
+  width: 56px;
+  height: 56px;
+  background: #1b110d;
+  color: #f0d8a0;
+  border: 1px solid #8f2b17;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+  transition: background 140ms ease, color 140ms ease, opacity 140ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.scroll-top-btn img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+}
+
+.scroll-top-btn:hover {
+  background: #3a1c13;
+  color: #fff;
+  opacity: 1;
+}
+
+.scroll-top-btn[hidden] {
+  display: none;
+}
+
 footer p {
   font-size: 0.72rem;
   line-height: 1.35;
