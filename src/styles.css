@@ -1796,7 +1796,11 @@ footer img.footer-flag {
     width: 100%;
     min-height: 0;
     border-left: 0;
-    border-top: 1px solid rgba(180, 120, 60, 0.22);
+    border-top: 1px solid rgba(196, 153, 102, 0.55);
+  }
+
+  .curio-option + .curio-option {
+    border-left: 0;
   }
 }
 
