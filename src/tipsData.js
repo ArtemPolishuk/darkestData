@@ -8,6 +8,7 @@ window.DarkestDataTips = {
       effective: [
         'Blight',
         'DMG vs Unholy',
+        'Physical DMG',
       ],
       ineffective: [
         'Bleed',
@@ -18,7 +19,7 @@ window.DarkestDataTips = {
       ],
       recommendations: [
         { label: 'Bring extra Food' },
-		{ label: 'Extra cures for:', notes: ['Bleed'] },
+		    { label: 'Bring extra cures for:', notes: ['Bleed'] },
         { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
       ],
       dangers: [
@@ -44,13 +45,13 @@ window.DarkestDataTips = {
         'Blight',
       ],
       resistances: [
-        { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed / Disease'] },
-        { label: 'Backline:', notes: ['Stun (!)', 'Blight / Disease'] },
+        { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed / Disease',] },
+        { label: 'Backline:', notes: ['Stun (!)', 'Blight / Disease',] },
       ],
       recommendations: [
         'Avoid being Marked',
         'Increase Scouting',
-		{ label: 'Extra cures for:', notes: ['Bleed / Blight / Disease'] },
+		{ label: 'Bring extra cures for:', notes: ['Bleed / Blight / Disease'] },
         { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard'] },
       ],
       dangers: [
@@ -67,11 +68,11 @@ window.DarkestDataTips = {
       effective: ['Blight', 'DMG vs Eldritch', 'Armor Piercing'],
       ineffective: ['Bleed'],
       resistances: [
-		{ label: 'Frontline:', notes: ['Stun / Move / Bleed (!)', 'Blight'] },
-        { label: 'Backline:', notes: ['Move (!)', 'Stun / Blight'] },
+		{ label: 'Frontline:', notes: ['Stun / Move / Bleed (!)',] },
+        { label: 'Backline:', notes: ['Move (!)', 'Stun'] },
 	  ],
       recommendations: [
-		{ label: 'Extra cures for:', notes: ['Bleed / Debuff'] },
+		{ label: 'Bring extra cures for:', notes: ['Bleed / Debuff'] },
 		{ label: 'Viable counter tools are:', notes: ['Stun / Guard-break'] },
 	  ],
       dangers: [],

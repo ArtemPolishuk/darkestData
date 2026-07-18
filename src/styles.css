@@ -811,7 +811,7 @@ footer img.footer-flag {
   gap: 10px;
   width: max-content;
   max-width: min(380px, calc(100vw - 24px));
-  max-height: min(420px, calc(100vh - 24px));
+  max-height: calc(100vh - 24px);
   overflow-y: auto;
   padding: 12px 14px;
   transform: translateY(calc(-50% + var(--tooltip-shift-y, 0px)));
@@ -883,24 +883,35 @@ footer img.footer-flag {
   object-position: center;
 }
 
+.tip-trinket-image {
+  width: 76px;
+  height: 76px;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .tip-trinket-entity--hero .tip-trinket-entity-media {
-  width: 72px;
-  min-width: 72px;
+  width: 76px;
+  min-width: 76px;
 }
 
 .tip-trinket-entity--trinket .tip-trinket-entity-media {
   width: 76px;
   min-width: 76px;
+  height: 76px;
+  overflow: hidden;
 }
 
 .tip-trinket-entity--quirk .tip-trinket-entity-media {
-  width: 84px;
-  min-width: 84px;
+  width: 76px;
+  min-width: 76px;
 }
 
 .tip-trinket-entity--stun .tip-trinket-entity-media {
-  width: 78px;
-  min-width: 78px;
+  width: 76px;
+  min-width: 76px;
 }
 
 .tip-trinket-text {
@@ -924,7 +935,7 @@ footer img.footer-flag {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: #f2f2f2;
   white-space: normal;
@@ -971,7 +982,7 @@ footer img.footer-flag {
   gap: 2px;
   min-width: 0;
   flex: 1 1 auto;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   line-height: 1.25;
   color: #f2f2f2;
   font-weight: 400;
@@ -987,7 +998,8 @@ footer img.footer-flag {
   flex-direction: column;
   gap: 2px;
   min-width: 0;
-  font-size: 0.95rem;
+  flex: 1 1 auto;
+  font-size: 0.8rem;
   line-height: 1.25;
   color: #f2f2f2;
   font-weight: 400;
@@ -1004,7 +1016,7 @@ footer img.footer-flag {
   gap: 2px;
   min-width: 0;
   flex: 1 1 auto;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   line-height: 1.25;
   color: #f2f2f2;
   font-weight: 400;
