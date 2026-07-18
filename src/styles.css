@@ -821,7 +821,7 @@ footer img.footer-flag {
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
-  z-index: 6;
+  z-index: 110;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -1120,7 +1120,7 @@ footer img.footer-flag {
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
-  z-index: 6;
+  z-index: 110;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -1232,7 +1232,7 @@ footer img.footer-flag {
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
-  z-index: 5;
+  z-index: 110;
 }
 
 .enemy-tooltip::before {
@@ -1249,7 +1249,7 @@ footer img.footer-flag {
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease;
-  z-index: 5;
+  z-index: 110;
 }
 
 .enemy-tooltip:hover::after,
@@ -1276,7 +1276,7 @@ footer img.footer-flag {
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease, transform 140ms ease;
-  z-index: 6;
+  z-index: 110;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
