@@ -23,12 +23,12 @@ window.DarkestDataTips = {
         { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
       ],
       dangers: [
-        { label: 'Bone Bearer', notes: ['Revives corpses', 'Buff enemies'] },
+        { label: 'Bone Bearer', notes: ['Buff / Revive allies'] },
         { label: 'Bone Captain', notes: ['High DMG from frontline', 'Party-wide Stun'] },
         { label: 'Bone Defender', notes: ['Move / Stun frontline', 'Guard allies'] },
         { label: 'Bone Spearman', notes: ['Party-wide DMG from frontline'] },
         { label: 'Bone Arbalist', notes: ['High DMG from backline', 'DMG vs Marked'] },
-        { label: 'Stress from:', notes: ['Bone Courtiers', 'Cultist Acolytes', 'Madman'] },
+        { label: 'Bone Courtiers', notes: ['Inflicts Stress from backline'] },
       ],
     },
     warrens: {
@@ -55,12 +55,12 @@ window.DarkestDataTips = {
         { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard'] },
       ],
       dangers: [
-        { label: 'Swine Skiver', notes: ['Move / Stun frontline'] },
-        { label: 'Large Corpse Eater', notes: ['Applies Marks', 'DMG vs Marked'] },
-        { label: 'Swine Wretch', notes: ['Inflicts Disease'] },
-        { label: 'Swine Drummer', notes: ['Applies Marks'] },
+        { label: 'Swine Skiver', notes: ['Move / Stun frontline', 'Blight backline', 'High DMG from backline'] },
+        { label: 'Large Corpse Eater', notes: ['Applies Marks', 'DMG vs Marked', 'High DMG'] },
         { label: 'Swinetaur', notes: ['Move / Stun frontline', 'High DMG from backline'] },
-        { label: 'Stress from:', notes: ['Swine Wretch', 'Swine Drummer', 'Madman', 'Cultist Acolyte'] },
+        { label: 'Swine Chopper', notes: ['Move / Stun backline', 'Bleed frontline'] },
+        { label: 'Swine Wretch', notes: ['Inflicts Disease', 'Inflicts Stress'] },
+        { label: 'Swine Drummer', notes: ['Inflicts Stress', 'Applies Marks'] },
       ],
     },
     cove: {
@@ -75,7 +75,13 @@ window.DarkestDataTips = {
 		{ label: 'Bring extra cures for:', notes: ['Bleed / Debuff'] },
 		{ label: 'Viable counter tools are:', notes: ['Stun / Guard-break'] },
 	  ],
-      dangers: [],
+      dangers: [
+        { label: 'Uca Major', notes: ['Move / Stun / Bleed frontline'] },
+        { label: 'Pelagic Grouper', notes: ['High DMG from frontline', 'Move backline'] },
+        { label: 'Pelagic Shaman', notes: ['Inflicts Stress', 'Buff / Heal allies'] },
+        { label: 'Pelagic Guardian', notes: ['Guard allies', 'Bleed frontline'] },
+        { label: 'Drowned Thrall', notes: ['Party-wide DMG', 'Inflicts Stress'] },
+      ],
     },
     weald: {
       enemyTypes: [],

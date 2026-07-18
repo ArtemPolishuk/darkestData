@@ -10,33 +10,33 @@ window.DarkestData = {
         short: {
           items: [
             { image: 'img/provision/Food.png', count: 12 },
-            { image: 'img/provision/Torch.png', count: 8 },
             { image: 'img/provision/Shovel.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 1 },
             { image: 'img/provision/Skeleton_Key.png', count: 2 },
             { image: 'img/provision/Holy_Water.png', count: 2 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 8 },
           ]
         },
         mid: {
           items: [
             { image: 'img/provision/Firewood.png', count: 1 },
             { image: 'img/provision/Food.png', count: 20 },
-            { image: 'img/provision/Torch.png', count: 16 },
             { image: 'img/provision/Shovel.png', count: 3 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
             { image: 'img/provision/Holy_Water.png', count: 3 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 16 },
           ]
         },
         long: {
           items: [
             { image: 'img/provision/Firewood.png', count: 2 },
             { image: 'img/provision/Food.png', count: 28 },
-            { image: 'img/provision/Torch.png', count: 24 },
             { image: 'img/provision/Shovel.png', count: 4 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
             { image: 'img/provision/Skeleton_Key.png', count: 4 },
             { image: 'img/provision/Holy_Water.png', count: 4 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
+            { image: 'img/provision/Torch.png', count: 24 },
           ]
         }
       }
@@ -50,37 +50,36 @@ window.DarkestData = {
         short: {
           items: [
             { image: 'img/provision/Food.png', count: 12 },
-            { image: 'img/provision/Torch.png', count: 8 },
             { image: 'img/provision/Shovel.png', count: 2 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
             { image: 'img/provision/Bandage.png', count: 1 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
             { image: 'img/provision/Skeleton_Key.png', count: 1 },
             { image: 'img/provision/Holy_Water.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 8 },
           ]
         },
         mid: {
           items: [
             { image: 'img/provision/Firewood.png', count: 1 },
             { image: 'img/provision/Food.png', count: 16 },
-            { image: 'img/provision/Torch.png', count: 16 },
             { image: 'img/provision/Shovel.png', count: 3 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
             { image: 'img/provision/Bandage.png', count: 2 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
             { image: 'img/provision/Skeleton_Key.png', count: 2 },
             { image: 'img/provision/Holy_Water.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 16 },
           ]
         },
         long: {
-          totalPrice: 6800,
           items: [
             { image: 'img/provision/Firewood.png', count: 2 },
-            { image: 'img/provision/Food.png', count: 24 },
-            { image: 'img/provision/Torch.png', count: 24 },
+            { image: 'img/provision/Food.png', count: 20 },
             { image: 'img/provision/Shovel.png', count: 4 },
-            { image: 'img/provision/Medicinal_Herbs.png', count: 5 },
             { image: 'img/provision/Bandage.png', count: 3 },
+            { image: 'img/provision/Medicinal_Herbs.png', count: 5 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
-            { image: 'img/provision/Holy_Water.png', count: 2 },
+            { image: 'img/provision/Holy_Water.png', count: 3 },
+            { image: 'img/provision/Torch.png', count: 24 },
           ]
         }
       },
@@ -93,38 +92,38 @@ window.DarkestData = {
       provision: 'Take bandages, seafood, and blight-cleansing supplies. A stable healing source and stun is valuable.',
       provisionGrid: {
         short: {
-          totalPrice: 3150,
           items: [
             { image: 'img/provision/Food.png', count: 12 },
-            { image: 'img/provision/Torch.png', count: 8 },
+            { image: 'img/provision/Shovel.png', count: 3 },
+            { image: 'img/provision/Antivenom.png', count: 1 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 3 },
-            { image: 'img/provision/Shovel.png', count: 2 },
-            { image: 'img/provision/Holy_Water.png', count: 1 },
             { image: 'img/provision/Skeleton_Key.png', count: 1 },
+            { image: 'img/provision/Holy_Water.png', count: 1 },
+            { image: 'img/provision/Torch.png', count: 8 },
           ]
         },
         mid: {
-          totalPrice: 5325,
           items: [
-            { image: 'img/provision/Food.png', count: 18 },
-            { image: 'img/provision/Torch.png', count: 12 },
+            { image: 'img/provision/Firewood.png', count: 1 },
+            { image: 'img/provision/Food.png', count: 20 },
+            { image: 'img/provision/Shovel.png', count: 5 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 4 },
-            { image: 'img/provision/Shovel.png', count: 3 },
             { image: 'img/provision/Holy_Water.png', count: 2 },
             { image: 'img/provision/Skeleton_Key.png', count: 2 },
-            { image: 'img/provision/Antivenom.png', count: 1 },
+            { image: 'img/provision/Antivenom.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 18 },
           ]
         },
         long: {
-          totalPrice: 6650,
           items: [
-            { image: 'img/provision/Food.png', count: 24 },
-            { image: 'img/provision/Torch.png', count: 16 },
+            { image: 'img/provision/Firewood.png', count: 2 },
+            { image: 'img/provision/Food.png', count: 28 },
             { image: 'img/provision/Medicinal_Herbs.png', count: 5 },
             { image: 'img/provision/Shovel.png', count: 4 },
             { image: 'img/provision/Holy_Water.png', count: 2 },
             { image: 'img/provision/Skeleton_Key.png', count: 3 },
             { image: 'img/provision/Antivenom.png', count: 2 },
+            { image: 'img/provision/Torch.png', count: 24 },
           ]
         },
       },

@@ -30,10 +30,17 @@ window.DarkestDataUrls = {
 		'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman',
 		'Swine Wretch': 'https://darkestdungeon.fandom.com/wiki/Swine_Wretch',
 		'Swine Drummer': 'https://darkestdungeon.fandom.com/wiki/Swine_Drummer',
-		'Large Corpse Eater': 'https://darkestdungeon.fandom.com/wiki/Carrion_Eater',
+		'Large Corpse Eater': 'https://darkestdungeon.fandom.com/wiki/Large_Carrion_Eater',
 		'Swine Skiver': 'https://darkestdungeon.fandom.com/wiki/Swine_Skiver',
 		'Swinetaur': 'https://darkestdungeon.fandom.com/wiki/Swinetaur',
 		'Bone Soldier': 'https://darkestdungeon.fandom.com/wiki/Bone_Soldier',
-		'Bone Captain': 'https://darkestdungeon.fandom.com/wiki/Bone_Captain'
+		'Bone Captain': 'https://darkestdungeon.fandom.com/wiki/Bone_Captain',
+		'Pelagic Grouper': 'https://darkestdungeon.fandom.com/wiki/Pelagic_Grouper',
+		'Pelagic Shaman': 'https://darkestdungeon.fandom.com/wiki/Pelagic_Shaman',
+		'Pelagic Guardian': 'https://darkestdungeon.fandom.com/wiki/Pelagic_Guardian',
+		'Drowned Thrall': 'https://darkestdungeon.fandom.com/wiki/Drowned_Thrall',
+		'Uca Major': 'https://darkestdungeon.fandom.com/wiki/Uca_Major',
+		'Squiffy Ghast': 'https://darkestdungeon.fandom.com/wiki/Squiffy_Ghast',
+		'Swine Chopper': 'https://darkestdungeon.fandom.com/wiki/Swine_Chopper'
 	}
 };
