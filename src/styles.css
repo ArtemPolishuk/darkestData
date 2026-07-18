@@ -752,6 +752,10 @@ footer img.footer-flag {
   color: #5cb8d8;
 }
 
+.tip-status-debuff {
+  color: #ff9f1c;
+}
+
 .tip-status-icon--buff {
   width: 1.25em;
   height: 1.25em;

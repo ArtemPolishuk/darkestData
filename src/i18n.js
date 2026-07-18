@@ -37,92 +37,19 @@ window.DarkestDataI18n = {
       regionTexts: {
         ruins: {
           provision: 'Pack torches, bandages, and anti-venom. A strong ranged party and stun are useful here.',
-          tips: {
-            enemyTypes: [
-              'Unholy (!)', 
-              'Human',
-            ],
-            effective: [
-              'Blight',
-              'DMG vs Unholy',
-            ],
-            ineffective: [
-              'Bleed',
-            ],
-            resistances: [
-              // { label: 'Party', notes: ['Stun / Move / Bleed',] },
-              { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed'] },
-              { label: 'Backline:', notes: ['Stun'] },
-            ],
-            recommendations: [
-              // { label: 'Avoid being Marked'},
-              { label: 'Bring extra Food' },
-              // { label: 'Bring cures for:', notes: ['Bleed'] },
-              { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard-break', 'Corpse removal'] },
-              // 'Stun / Move / Guard-break / Corpse removal are viable disruption tools',
-              // 'Corpse removal partially mitigates Bone Bearer revivals',
-              // 'Armor Piercing is situational',
-            ],
-            dangers: [
-              { label: 'Bone Bearer', notes: ['Revives corpses', 'Buff enemies'] },
-              { label: 'Bone Captain', notes: ['High DMG from frontline', 'Party-wide Stun'] },
-              { label: 'Bone Defender', notes: ['Move / Stun frontline', 'Guard allies'] },
-              { label: 'Bone Spearman', notes: ['Party-wide DMG from frontline'] },
-              { label: 'Bone Arbalist', notes: ['High DMG from backline', 'DMG vs Marked'] },
-              // { label: 'Bone Soldier', notes: ['Starts in Stealth'] },
-              { label: 'Stress from:', notes: ['Bone Courtiers', 'Cultist Acolytes', 'Madman'] },
-            ]
-          }
+          tips: (window.DarkestDataTips && window.DarkestDataTips.en && window.DarkestDataTips.en.ruins) || {}
         },
         warrens: {
           provision: 'Bring food, medicine, and at least one torch per hero. A retribution or bleed resist item helps a lot.',
-          tips: {
-            enemyTypes: [
-              'Beast (!)',
-              'Human (!)',
-            ],
-            effective: [
-              'Bleed',
-              'DMG vs Beast',
-              'DMG vs Human',
-              // 'DMG vs Big Sized',
-            ],
-            ineffective: [
-              'Blight',
-            ],
-            resistances: [
-              // { label: 'Party', notes: ['Disease / Stun'] },
-
-              // 'Party: Disease / Stun / Bleed',
-              // { label: 'Party:', notes: ['Stun / Move', 'Bleed / Blight / Disease'] },
-              { label: 'Frontline:', notes: ['Stun / Move (!)', 'Bleed / Disease'] },
-              { label: 'Backline:', notes: ['Stun (!)', 'Blight / Disease'] },
-
-            ],
-            recommendations: [
-              'Avoid being Marked',
-              // { label: 'Bring cures for:', notes: ['Bleed', 'Blight', 'Disease'] },
-              'Increase Scouting',
-              { label: 'Viable counter tools are:', notes: ['Stun / Move', 'Guard'] },
-            ],
-            dangers: [
-              { label: 'Swine Skiver', notes: ['Move / Stun frontline'] },
-              { label: 'Large Corpse Eater', notes: ['Applies Marks', 'DMG vs Marked'] },
-              { label: 'Swine Wretch', notes: ['Inflicts Disease'] },
-              { label: 'Swine Drummer', notes: ['Applies Marks'] },
-              { label: 'Swinetaur', notes: ['Move / Stun frontline', 'High DMG from backline'] },
-              { label: 'Stress from:', notes: ['Swine Wretch ', 'Swine Drummer ', 'Madman', 'Cultist Acolyte'] },
-
-            ],
-          }
+          tips: (window.DarkestDataTips && window.DarkestDataTips.en && window.DarkestDataTips.en.warrens) || {}
         },
         cove: {
           provision: 'Take bandages, seafood, and blight-cleansing supplies. A stable healing source and stun is valuable.',
-          tips: 'Bring heroes that can handle bleed, keep morale steady, and avoid early cave-ins by moving carefully.'
+          tips: (window.DarkestDataTips && window.DarkestDataTips.en && window.DarkestDataTips.en.cove) || {}
         },
         weald: {
           provision: 'Carry torches, poison cure, and stress relief items. Extra scouting helps uncover enemies early.',
-          tips: 'Manage food and stress, use debuffs on dangerous foes, and don’t let surprise attacks stack up.'
+          tips: (window.DarkestDataTips && window.DarkestDataTips.en && window.DarkestDataTips.en.weald) || {}
         },
         'crimson-court': {
           provision: 'Bring plague cure, bandages, and stealth options. Keep torches up and manage resistances carefully.',
@@ -189,41 +116,19 @@ window.DarkestDataI18n = {
       regionTexts: {
         ruins: {
           provision: 'Візьміть факели, бинти та антивеном. Сильна дистанційна команда і контроль дуже корисні тут.',
-          tips: {
-            enemyTypes: [
-              'Скелети та неживі люди',
-              'Bone Rabble, Bone Arbalist, Bone Courtier, Bone Defender, Bone Veteran'
-            ],
-            effective: [
-              'Отрута та сильна шкода по задньому ряду',
-              'Контроль, оглушення та висока влучність'
-            ],
-            ineffective: [
-              'Шкода через кровотечу',
-              'Команди, які не дістають до задньої лінії'
-            ],
-            recommendations: [
-              'Crusader',
-              'Отрута',
-              'Шкода по неживих',
-            ],
-            dangers: [
-              'Стрес від Bone Courtier і тиск на задню лінію',
-              'Небезпечні танки на фронті, якщо їх не прибрати швидко'
-            ]
-          }
+          tips: (window.DarkestDataTips && window.DarkestDataTips.uk && window.DarkestDataTips.uk.ruins) || {}
         },
         warrens: {
           provision: 'Візьміть їжу, ліки та щонайменше один факел на героя. Корисні предмети проти кровотечі й агресії.',
-          tips: 'Пріоритет — контроль натовпу, швидке зняття стеків хвороби та міцний фронтлайнер попереду.'
+          tips: (window.DarkestDataTips && window.DarkestDataTips.uk && window.DarkestDataTips.uk.warrens) || {}
         },
         cove: {
           provision: 'Візьміть бинти, морепродукти і засоби від гнилі. Наявність стабільного лікування і контролю важлива.',
-          tips: 'Ведіть героїв, що витримують кровотечу, тримайте дух на високому рівні і уникайте довгих боїв.'
+          tips: (window.DarkestDataTips && window.DarkestDataTips.uk && window.DarkestDataTips.uk.cove) || {}
         },
         weald: {
           provision: 'Візьміть факели, ліки від отрут і засоби для стресу. Додаткове розвідування допоможе знайти ворогів раніше.',
-          tips: 'Керуйте їжею та стресом, використовуйте дебафи і не дозволяйте ворогам накопичуватись.'
+          tips: (window.DarkestDataTips && window.DarkestDataTips.uk && window.DarkestDataTips.uk.weald) || {}
         },
         'crimson-court': {
           provision: 'Візьміть антиплаг, бинти та приховані вміння. Тримайте факели високими і контролюйте опірність.',

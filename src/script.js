@@ -101,116 +101,13 @@ const provisionPrices = {
 	Dog_Treats: 0
 };
 
-const provisionWikiLinks = {
-	Food: 'https://darkestdungeon.fandom.com/wiki/Food',
-	Shovel: 'https://darkestdungeon.fandom.com/wiki/Shovel',
-	Bandage: 'https://darkestdungeon.fandom.com/wiki/Bandage',
-	Medicinal_Herbs: 'https://darkestdungeon.fandom.com/wiki/Medicinal_Herbs',
-	Skeleton_Key: 'https://darkestdungeon.fandom.com/wiki/Skeleton_Key',
-	Holy_Water: 'https://darkestdungeon.fandom.com/wiki/Holy_Water',
-	Torch: 'https://darkestdungeon.fandom.com/wiki/Torch',
-	Firewood: 'https://darkestdungeon.fandom.com/wiki/Firewood',
-	Antivenom: 'https://darkestdungeon.fandom.com/wiki/Antivenom'
-};
+const provisionWikiLinks = (window.DarkestDataUrls && window.DarkestDataUrls.provision) || {};
 
-const provisionPriorityGroups = {
-	ruins: [
-		[
-			{ name: 'Holy_Water', label: 'Holy water' },
-			{ name: 'Skeleton_Key', label: 'Skeleton key' }
-		],
-		[
-			{ name: 'Shovel', label: 'Shovel' }
-		],
-		[
-			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
-		],
-		[
-			{ name: 'Antivenom', label: 'Antivenom' },
-			{ name: 'Bandage', label: 'Bandage' }
-		]
-	],
-	warrens: [
-		[
-			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
-		],
-		[
-			{ name: 'Bandage', label: 'Bandage' },
-			{ name: 'Shovel', label: 'Shovel' }
-		],
-		[
-			{ name: 'Skeleton_Key', label: 'Skeleton key' },
-			{ name: 'Holy_Water', label: 'Holy water' }
-		],
-		[
-			{ name: 'Antivenom', label: 'Antivenom' }
-		]
-	],
-	cove: [
-		[
-			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' },
-			{ name: 'Shovel', label: 'Shovel' }
-		],
-		[
-			{ name: 'Holy_Water', label: 'Holy water' }
-		],
-		[
-			{ name: 'Skeleton_Key', label: 'Skeleton key' }
-		],
-		[
-			{ name: 'Antivenom', label: 'Antivenom' }
-		],
-		[
-			{ name: 'Bandage', label: 'Bandage' }
-		]
-	],
-	weald: [
-		[
-			{ name: 'Antivenom', label: 'Antivenom' },
-			{ name: 'Bandage', label: 'Bandage' }
-		],
-		[
-			{ name: 'Shovel', label: 'Shovel' }
-		],
-		[
-			{ name: 'Skeleton_Key', label: 'Skeleton key' }
-		],
-		[
-			{ name: 'Medicinal_Herbs', label: 'Medicinal herbs' }
-		],
-		[
-			{ name: 'Holy_Water', label: 'Holy water' }
-		]
-	]
-};
+const provisionPriorityGroups = window.DarkestDataProvisionPriority || {};
 
-const regionWikiLinks = {
-	ruins: 'https://darkestdungeon.fandom.com/wiki/Ruins',
-	warrens: 'https://darkestdungeon.fandom.com/wiki/Warrens',
-	cove: 'https://darkestdungeon.fandom.com/wiki/Cove',
-	weald: 'https://darkestdungeon.fandom.com/wiki/Weald',
-	town: 'https://darkestdungeon.fandom.com/wiki/Village',
-	'crimson-court': 'https://darkestdungeon.fandom.com/wiki/The_Crimson_Court',
-	'color-of-madness': 'https://darkestdungeon.fandom.com/wiki/The_Color_of_Madness',
-	darkest: 'https://darkestdungeon.fandom.com/wiki/Darkest_Dungeon'
-};
+const regionWikiLinks = (window.DarkestDataUrls && window.DarkestDataUrls.regions) || {};
 
-const enemyWikiLinks = {
-	'Bone Bearer': 'https://darkestdungeon.fandom.com/wiki/Bone_Bearer',
-	'Bone Arbalist': 'https://darkestdungeon.fandom.com/wiki/Bone_Arbalist',
-	'Bone Courtier': 'https://darkestdungeon.fandom.com/wiki/Bone_Courtier',
-	'Bone Defender': 'https://darkestdungeon.fandom.com/wiki/Bone_Defender',
-	'Bone Spearman': 'https://darkestdungeon.fandom.com/wiki/Bone_Spearman',
-	'Cultist Acolyte': 'https://darkestdungeon.fandom.com/wiki/Cultist_Acolyte',
-	'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman',
-	'Swine Wretch': 'https://darkestdungeon.fandom.com/wiki/Swine_Wretch',
-	'Swine Drummer': 'https://darkestdungeon.fandom.com/wiki/Swine_Drummer',
-	'Large Corpse Eater': 'https://darkestdungeon.fandom.com/wiki/Carrion_Eater',
-	'Swine Skiver': 'https://darkestdungeon.fandom.com/wiki/Swine_Skiver',
-	'Swinetaur': 'https://darkestdungeon.fandom.com/wiki/Swinetaur',
-	'Bone Soldier': 'https://darkestdungeon.fandom.com/wiki/Bone_Soldier',
-	'Bone Captain': 'https://darkestdungeon.fandom.com/wiki/Bone_Captain'
-};
+const enemyWikiLinks = (window.DarkestDataUrls && window.DarkestDataUrls.enemies) || {};
 
 const storageKeys = {
 	locale: 'darkest-data-locale',
@@ -474,6 +371,7 @@ function applyInlineIcons(html) {
 		[/(\bBleed\b)/gi,       '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bBlight\b)/gi,      '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>'],
 		[/\bBuff\b/gi,          '<span class="tip-status tip-status-buff"><span>Buff</span><img class="tip-status-icon tip-status-icon--buff" src="img/effects/Buff.curio_tracker.webp" alt="" aria-hidden="true"></span>'],
+		[/\bDebuff\b/gi,        '<span class="tip-status tip-status-debuff"><span>Debuff</span><img class="tip-status-icon" src="img/effects/Poptext_debuff.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bStress\b)/gi,      '<span class="tip-status tip-status-stress"><span>Stress</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bFood\b)/gi,        '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>'],
 		[/(\bBandages?\b)/gi,   '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Bandage" target="_blank" rel="noopener noreferrer">Bandage</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Bandage.png" alt="Bandage"></span></span>'],
