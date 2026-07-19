@@ -30,7 +30,7 @@ window.DarkestDataUrls = {
 		'Madman': 'https://darkestdungeon.fandom.com/wiki/Madman',
 		'Swine Wretch': 'https://darkestdungeon.fandom.com/wiki/Swine_Wretch',
 		'Swine Drummer': 'https://darkestdungeon.fandom.com/wiki/Swine_Drummer',
-		'Large Corpse Eater': 'https://darkestdungeon.fandom.com/wiki/Large_Carrion_Eater',
+		'Large Carrion Eater': 'https://darkestdungeon.fandom.com/wiki/Large_Carrion_Eater',
 		'Swine Skiver': 'https://darkestdungeon.fandom.com/wiki/Swine_Skiver',
 		'Swinetaur': 'https://darkestdungeon.fandom.com/wiki/Swinetaur',
 		'Bone Soldier': 'https://darkestdungeon.fandom.com/wiki/Bone_Soldier',
@@ -41,6 +41,15 @@ window.DarkestDataUrls = {
 		'Drowned Thrall': 'https://darkestdungeon.fandom.com/wiki/Drowned_Thrall',
 		'Uca Major': 'https://darkestdungeon.fandom.com/wiki/Uca_Major',
 		'Squiffy Ghast': 'https://darkestdungeon.fandom.com/wiki/Squiffy_Ghast',
-		'Swine Chopper': 'https://darkestdungeon.fandom.com/wiki/Swine_Chopper'
+		'Swine Chopper': 'https://darkestdungeon.fandom.com/wiki/Swine_Chopper',
+		'Hateful Virago': 'https://darkestdungeon.fandom.com/wiki/Hateful_Virago',
+		'Necrotic Fungus': 'https://darkestdungeon.fandom.com/wiki/Necrotic_Fungus',
+		'Unclean Giant': 'https://darkestdungeon.fandom.com/wiki/Unclean_Giant',
+		'Fungal Artillery': 'https://darkestdungeon.fandom.com/wiki/Fungal_Artillery',
+		'Fungal Scratcher': 'https://darkestdungeon.fandom.com/wiki/Fungal_Scratcher',
+		'Crone': 'https://darkestdungeon.fandom.com/wiki/Crone',
+		'Rabid Gnasher': 'https://darkestdungeon.fandom.com/wiki/Rabid_Gnasher',
+		'Large Ectoplasm': 'https://darkestdungeon.fandom.com/wiki/Large_Ectoplasm',
+		'Ectoplasm': 'https://darkestdungeon.fandom.com/wiki/Ectoplasm'
 	}
 };

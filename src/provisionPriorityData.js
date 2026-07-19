@@ -1,8 +1,8 @@
 window.DarkestDataProvisionPriority = {
 	ruins: [
 		[
+			{ name: 'Skeleton_Key', label: 'Skeleton Key' },
 			{ name: 'Holy_Water', label: 'Holy Water' },
-			{ name: 'Skeleton_Key', label: 'Skeleton Key' }
 		],
 		[
 			{ name: 'Shovel', label: 'Shovel' }
@@ -21,11 +21,11 @@ window.DarkestDataProvisionPriority = {
 		],
 		[
 			{ name: 'Bandage', label: 'Bandage' },
-			{ name: 'Shovel', label: 'Shovel' }
+			{ name: 'Holy_Water', label: 'Holy Water' },
 		],
 		[
 			{ name: 'Skeleton_Key', label: 'Skeleton Key' },
-			{ name: 'Holy_Water', label: 'Holy Water' }
+			{ name: 'Shovel', label: 'Shovel' }
 		],
 		[
 			{ name: 'Antivenom', label: 'Antivenom' }
@@ -53,7 +53,8 @@ window.DarkestDataProvisionPriority = {
 			{ name: 'Bandage', label: 'Bandage' }
 		],
 		[
-			{ name: 'Shovel', label: 'Shovel' }
+			{ name: 'Shovel', label: 'Shovel' },
+			{ name: 'Holy_Water', label: 'Holy Water' }
 		],
 		[
 			{ name: 'Skeleton_Key', label: 'Skeleton Key' }
@@ -61,8 +62,5 @@ window.DarkestDataProvisionPriority = {
 		[
 			{ name: 'Medicinal_Herbs', label: 'Medicinal Herbs' }
 		],
-		[
-			{ name: 'Holy_Water', label: 'Holy Water' }
-		]
 	]
 };

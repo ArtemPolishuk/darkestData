@@ -7,7 +7,7 @@ window.DarkestDataI18n = {
       languageLabel: 'Language',
       regionHeading: 'Region',
       chooseRegion: 'Choose a region:',
-      chooseLongevity: 'Choose size of journey:',
+      chooseLongevity: 'Choose journey length:',
       chooseLevel: 'Choose level:',
       provisionHeading: 'Provision',
       provisionPriorityHeading: 'Priority',
@@ -17,7 +17,7 @@ window.DarkestDataI18n = {
       bossesTab: 'Bosses (TBD)',
       heroesTab: 'Heroes (TBD)',
       regionPreviewAlt: '{name} region preview',
-        footerText: `This is a fan-made tool created to help players on their darkest journeys.<br>All game content, names, materials, trademarks, and images belong <a href="https://www.redhookgames.com/" target="_blank" rel="noopener noreferrer">Red Hook Studios</a>, creators of <a href="https://www.darkestdungeon.com/" target="_blank" rel="noopener noreferrer">Darkest Dungeon</a>.<br>Thank you for the inspiration, references, challenge, and for being helpful throughout my own journey to <a href="https://arnaud.rocks/darkest-companion/" target="_blank" rel="noopener noreferrer">Darkest Companion</a>.<br>Finally, eternal gratitude to the Armed Forces of Ukraine for their protection, courage, and resilient fight against imperialist aggression.<br><img class="footer-flag" src="img/ukraine-flag.svg" alt="Ukraine flag"> Glory to Ukraine!`,
+        footerText: `This is a fan-made tool created to help players on their darkest journeys.<br>All game content, names, materials, trademarks, and images belong to <a href="https://www.redhookgames.com/" target="_blank" rel="noopener noreferrer">Red Hook Studios</a>, creators of <a href="https://www.darkestdungeon.com/" target="_blank" rel="noopener noreferrer">Darkest Dungeon</a>.<br>Thank you for the inspiration, references, challenge, and for being helpful throughout my own journey to <a href="https://arnaud.rocks/darkest-companion/" target="_blank" rel="noopener noreferrer">Darkest Companion</a>.<br>Finally, eternal gratitude to the Armed Forces of Ukraine for their protection, courage, and resilient fight against imperialist aggression.<br><img class="footer-flag" src="img/ukraine-flag.svg" alt="Ukraine flag"> Glory to Ukraine! Peace on planet Earth! 🌍`,
       panelContent: {
         curios: 'Curios content goes here. Add your dungeon curios details and interactions.',
         bosses: 'Bosses content goes here',

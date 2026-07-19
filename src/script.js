@@ -342,6 +342,9 @@ function formatTipItem(item) {
 	if (/\bstress\b/i.test(text)) {
 		return text.replace(/\bstress\b/gi, match => `<span class="tip-status tip-status-stress"><span>${match.charAt(0).toUpperCase()}${match.slice(1).toLowerCase()}</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>`);
 	}
+	if (/\bhorror\b/i.test(text)) {
+		return text.replace(/\bhorror\b/gi, match => `<span class="tip-status tip-status-horror"><span>${match.charAt(0).toUpperCase()}${match.slice(1).toLowerCase()}</span><img class="tip-status-icon" src="img/effects/Poptext_horror.webp" alt="" aria-hidden="true"></span>`);
+	}
 	if (/^crusader$/i.test(text)) {
 		return '<span class="hero-tip"><a class="hero-name" href="https://darkestdungeon.fandom.com/wiki/Crusader" target="_blank" rel="noopener noreferrer">Crusader</a><span class="hero-tip-card" role="tooltip"><span class="hero-tip-text"><span class="hero-tip-title">Crusader</span><span class="hero-tip-stats">+35% DMG vs Unholy<br>on main damage skills</span></span><img class="hero-tip-image" src="img/heroIcons/crusader_portrait_roster.png" alt="Crusader"></span></span>';
 	}
@@ -371,12 +374,14 @@ function applyInlineIcons(html) {
 		[/(\bMove\b)/gi,        '<span class="tip-status tip-status-move"><span>Move</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bKnockback\b)/gi,   '<span class="tip-status tip-status-move"><span>Knockback</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bPush\b)/gi,        '<span class="tip-status tip-status-move"><span>Push</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bPull\b)/gi,        '<span class="tip-status tip-status-move"><span>Pull</span><img class="tip-status-icon" src="img/effects/Poptext_move.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bBleed\b)/gi,       '<span class="tip-status tip-status-bleed"><span>Bleed</span><img class="tip-status-icon" src="img/effects/Poptext_bleed.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bBlight\b)/gi,      '<span class="tip-status tip-status-blight"><span>Blight</span><img class="tip-status-icon" src="img/effects/Poptext_poison.webp" alt="" aria-hidden="true"></span>'],
 		[/\bBuff\b/gi,          '<span class="tip-status tip-status-buff"><span>Buff</span><img class="tip-status-icon tip-status-icon--buff" src="img/effects/Buff.curio_tracker.webp" alt="" aria-hidden="true"></span>'],
 		[/\bDebuff\b/gi,        '<span class="tip-status tip-status-debuff"><span>Debuff</span><img class="tip-status-icon" src="img/effects/Poptext_debuff.webp" alt="" aria-hidden="true"></span>'],
 		[/\bHeal\b/gi,          '<span class="tip-status tip-status-heal"><span>Heal</span><img class="tip-status-icon" src="img/effects/Skill_attribute_heal.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bStress\b)/gi,      '<span class="tip-status tip-status-stress"><span>Stress</span><img class="tip-status-icon" src="img/effects/stress.webp" alt="" aria-hidden="true"></span>'],
+		[/(\bHorror\b)/gi,      '<span class="tip-status tip-status-horror"><span>Horror</span><img class="tip-status-icon" src="img/effects/Poptext_horror.webp" alt="" aria-hidden="true"></span>'],
 		[/(\bFood\b)/gi,        '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Food" target="_blank" rel="noopener noreferrer">Food</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Food.png" alt="Food"></span></span>'],
 		[/(\bBandages?\b)/gi,   '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Bandage" target="_blank" rel="noopener noreferrer">Bandage</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Bandage.png" alt="Bandage"></span></span>'],
 		[/(\bAntivenoms?\b)/gi, '<span class="tip-recommendation-food-wrap"><a class="tip-recommendation-food-link" href="https://darkestdungeon.fandom.com/wiki/Antivenom" target="_blank" rel="noopener noreferrer">Antivenom</a><span class="tip-recommendation-food-card" role="tooltip"><img class="tip-recommendation-food-image" src="img/provision/Antivenom.png" alt="Antivenom"></span></span>'],
@@ -414,7 +419,7 @@ function formatDangerText(text) {
 		.replace(/(Madman)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks.Madman}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Madman.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Swine Wretch\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Wretch']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Wretch.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Swine Drummer\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Drummer']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Drummer.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
-		.replace(/(Large Corpse Eater\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Large Corpse Eater']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Carrion_Big.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Large Carrion Eater\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Large Carrion Eater']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Carrion_Big.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Swine Skiver\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Skiver']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Skiver.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Swinetaur\s?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swinetaur']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swinetaur.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Swine Choppers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Swine Chopper']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Swine_Chopper.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
@@ -424,6 +429,20 @@ function formatDangerText(text) {
 		.replace(/(Drowned Thralls?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Drowned Thrall']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Drowned_Thrall.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Uca Major)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Uca Major']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Uca_Crusher.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
 		.replace(/(Squiffy Ghasts?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Squiffy Ghast']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Squiffy_Ghast.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Hateful Viragos?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Hateful Virago']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Hateful_Virago.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Necrotic Fungi|Necrotic Fungus)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Necrotic Fungus']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Necrotic_Fungus.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Unclean Giants?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Unclean Giant']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Unclean_Giant.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Fungal Artillerys?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Fungal Artillery']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Fungal_Artillery.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Fungal Scratchers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Fungal Scratcher']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Fungal_Bloat.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Crone)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Crone']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Crone.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Rabid Gnashers?)([,.]?)/gi, (_, name, punctuation) => `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks['Rabid Gnasher']}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/Rabid_Gnasher.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`)
+		.replace(/(Large Ectoplasms?|Ectoplasms?)([,.]?)|(<[^>]+>)/gi, (m, name, punctuation, tag) => {
+			if (tag) return tag;
+			const isLarge = /^Large/i.test(name);
+			const key = isLarge ? 'Large Ectoplasm' : 'Ectoplasm';
+			const img = isLarge ? 'Big_Slime' : 'Slime';
+			return `<a class="enemy-name enemy-tooltip tip-marked tip-marked--enemy" href="${enemyWikiLinks[key]}" target="_blank" rel="noopener noreferrer" style="--enemy-tooltip-image: url('img/enemies/${img}.webp')"><span class="tip-marked-text">${name}</span><span class="tip-marked-icon" aria-hidden="true"></span></a>${punctuation}`;
+		})
 		.replace(/\s+,/g, ',');
 }
 
@@ -717,11 +736,7 @@ function renderRegionTips(tips) {
 				${renderGroup('Ineffective DMG:', tips.ineffective)}
 			</div>
 			<div class="tip-layout-grid">
-				<div class="tip-layout-left">
 				${renderGroup('Resistances to increase:', tips.resistances, 'tip-group--resistances')}
-				<hr class="tip-divider">
-				${renderGroup('Recommendations:', tips.recommendations, 'tip-group--recommendations')}
-				</div>
 				<div class="tip-group tip-group--dangers">
 					<strong>Dangers:</strong>
 					<ul>
